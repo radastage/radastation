@@ -2,4 +2,10 @@
 
 <h1>Welcome to Radastation 13.</h1>
 
-<i>Glory to Syndicate.</i>
+<i>What to do around here:</i><br>
+<ul>
+  <li>Join up the round on random (or not) generated space wastes.</li>
+  <li>In case the map is empty and there is only space around you - ask admins to actually spawn the station.</li>
+  <li>In case you're the admin - use Debug - Spawn - "stationspawner" (or "randomstation" for more hardcore experience), or use Special Verbs - Toggle Build Mode Self and manually create the station. Don't forget to save it using Debug - Save World, duh.</li>
+</ul>
+
