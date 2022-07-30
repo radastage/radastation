@@ -7,5 +7,7 @@
   <li>Join up the round on random (or not) generated space wastes.</li>
   <li>In case the map is empty and there is only space around you - ask admins to actually spawn the station.</li>
   <li>In case you're the admin - use Debug - Spawn - "stationspawner" (or "randomstation" for more hardcore experience), or use Special Verbs - Toggle Build Mode Self and manually create the station. Don't forget to save it using Debug - Save World, duh.</li>
+  <li>Don't forget to add some cool stuff (Debug - Spawn - "stationloot") or random stuff (Debug - Spawn Random - "weapon" or "storage" or "food" or "computer" or "closet" or even "animal/hostile" for big keks)</li>
+  <li>You will find out the rest of cool (?) features soon or later</li>
 </ul>
 
