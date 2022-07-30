@@ -5,8 +5,8 @@
 	item_state = "headset"
 	g_amt = 0
 	m_amt = 75
-	subspace_transmission = 1
-	canhear_range = 0 // can't hear headsets from very far away
+	subspace_transmission = 0 //1
+	canhear_range = 1 //0 // can't hear headsets from very far away
 
 	slot_flags = SLOT_EARS
 	var/translate_binary = 0
@@ -18,7 +18,7 @@
 /obj/item/device/radio/headset/New()
 	..()
 	keyslot1 = new /obj/item/device/encryptionkey/
-	recalculateChannels()
+//	recalculateChannels()
 
 /obj/item/device/radio/headset/receive_range(freq, level)
 	if(ishuman(src.loc))
@@ -34,7 +34,7 @@
 	del(keyslot1)
 	keyslot1 = new /obj/item/device/encryptionkey/syndicate
 	syndie = 1
-	recalculateChannels()
+//	recalculateChannels()
 
 /obj/item/device/radio/headset/binary
 	origin_tech = "syndicate=3"
@@ -42,7 +42,8 @@
 	..()
 	del(keyslot1)
 	keyslot1 = new /obj/item/device/encryptionkey/binary
-	recalculateChannels()
+	translate_binary = 1
+//	recalculateChannels()
 
 /obj/item/device/radio/headset/headset_sec
 	name = "security radio headset"
@@ -192,7 +193,7 @@
 					keyslot2.loc = T
 					keyslot2 = null
 
-			recalculateChannels()
+//			recalculateChannels()
 			user << "You pop out the encryption keys in the headset!"
 
 		else
@@ -214,7 +215,7 @@
 			keyslot2 = W
 
 
-		recalculateChannels()
+//		recalculateChannels()
 
 	return
 

@@ -1115,6 +1115,15 @@ proc/spawn_random_atom(var/object as text, turf/location as turf)
 
 	del(src)
 
+/obj/effect/workplace_robotics/New(turf/location as turf)
+	new /obj/machinery/computer/mecha(locate(location.x,location.y,location.z))
+	new /obj/machinery/mech_bay_recharge_port(locate(location.x,(location.y+1),location.z))
+	new /turf/simulated/floor/mech_bay_recharge_floor(locate((location.x+1),(location.y+1),location.z))
+	new /obj/machinery/mecha_part_fabricator(locate((location.x+1),location.y,location.z))
+	new /obj/machinery/robotic_fabricator(locate((location.x+2),location.y,location.z))
+	new /obj/machinery/computer/mech_bay_power_console(locate((location.x+2),(location.y+1),location.z))
+	del(src)
+
 /obj/effect/workplace_teleporter/New(turf/location as turf)
 	new /obj/machinery/teleport/hub(locate((location.x+1),location.y,location.z))
 	new /obj/machinery/teleport/station(locate(location.x,location.y,location.z))

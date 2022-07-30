@@ -60,6 +60,11 @@
 		sleep(1)
 		new /obj/item/clothing/mask/breath( src )
 		new /obj/item/weapon/tank/emergency_oxygen( src )
+		new /obj/item/weapon/crowbar/red ( src )
+		new /obj/item/weapon/reagent_containers/food/snacks/donkpocket ( src )
+		new /obj/item/device/radio ( src )
+		new /obj/item/device/flashlight/flare ( src )
+		new /obj/item/weapon/storage/wallet/random ( src )
 		return
 
 /obj/item/weapon/storage/box/engineer

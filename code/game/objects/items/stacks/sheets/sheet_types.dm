@@ -338,6 +338,7 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	new/datum/stack_recipe("film cartridge", /obj/item/device/camera_film), \
 	new/datum/stack_recipe("photo album", /obj/item/weapon/storage/photo_album), \
 	new/datum/stack_recipe("festive paper hat", /obj/item/clothing/head/festive), \
+	new/datum/stack_recipe("notice board", /obj/structure/noticeboard, 2, time = 10, one_per_turf = 1), \
 )
 
 /obj/item/stack/sheet/cardboard	//BubbleWrap

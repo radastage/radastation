@@ -610,9 +610,15 @@ About the new airlock wires panel:
 
 
 /obj/machinery/door/airlock/attack_paw(mob/user as mob)
-	return src.attack_hand(user)
+	if(istype(user, /mob/dead/observer))
+		return src.attack_ai(user)
+	else
+		return src.attack_hand(user)
 
 /obj/machinery/door/airlock/attack_hand(mob/user as mob)
+	if(istype(user, /mob/dead/observer))
+		return src.attack_ai(user)
+
 	if(!istype(user, /mob/living/silicon))
 		if(src.isElectrified())
 			if(src.shock(user, 100))
