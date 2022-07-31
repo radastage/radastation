@@ -6,6 +6,7 @@
 	icon_state = "main1"
 	unacidable = 1
 	layer = TURF_LAYER
+	invisibility = INVISIBILITY_OBSERVER
 	var/delchance = 15
 	var/spawninfo = null
 	var/spawnuniform = null

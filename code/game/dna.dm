@@ -423,7 +423,7 @@
 				C.occupant = O
 				connected = null
 
-			O.real_name = random_name(O.gender)
+		//	O.real_name = random_name(O.gender)
 
 			updateappearance(O)
 			O.take_overall_damage(M.getBruteLoss(), M.getFireLoss())

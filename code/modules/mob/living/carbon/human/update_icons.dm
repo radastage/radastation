@@ -91,7 +91,7 @@ Please contact me on #coderbus IRC. ~Carnie x
 /mob/living/carbon/human/proc/update_base_icon_state()
 	var/race = dna ? dna.mutantrace : null
 	switch(race)
-		if("lizard","golem","slime","shadow","adamantine","fly","plant","abductor", "skrell")
+		if("golem","slime","shadow","adamantine","fly","plant","abductor", "skrell")
 			base_icon_state = "[dna.mutantrace]_[(gender == FEMALE) ? "f" : "m"]"
 		if("skeleton")
 			base_icon_state = "skeleton"
@@ -117,6 +117,14 @@ Please contact me on #coderbus IRC. ~Carnie x
 			overlays_standing += ogreskin
 			overlays_lying += ogreskin
 			overlays += ogreskin
+
+		if("lizard")
+			if(age<21)
+				base_icon_state = "[dna.mutantrace]_[(gender == FEMALE) ? "f" : "m"]_1"
+			if(age>=21 && age <31)
+				base_icon_state = "[dna.mutantrace]_[(gender == FEMALE) ? "f" : "m"]_2"
+			if(age>=31 && age < 41)
+				base_icon_state = "[dna.mutantrace]_[(gender == FEMALE) ? "f" : "m"]_3"
 
 		if("plasmaman")
 			base_icon_state = "plasmaman"

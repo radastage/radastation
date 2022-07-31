@@ -540,3 +540,5 @@
 
 /mob/living/carbon/proc/create_dna()
 	dna = new /datum/dna(src)
+	if (src.client)
+		dna.real_name = client.prefs.real_name

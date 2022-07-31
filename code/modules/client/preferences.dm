@@ -89,7 +89,6 @@ datum/preferences
 			return
 	//we couldn't load character data so just randomize the character appearance + name
 	random_character()		//let's create a random character then - rather than a fat, bald and naked man.
-//	real_name = random_name(gender)
 	if(!loaded_preferences_successfully)
 		save_preferences()
 	save_character()		//let's save this new random character so it doesn't keep generating new ones.
@@ -653,6 +652,7 @@ datum/preferences
 		//	else if(firstspace == name_length)
 		//		real_name += "[pick(last_names)]"
 
+
 		character.real_name = real_name
 		character.name = character.real_name
 		if(character.dna)
@@ -674,6 +674,7 @@ datum/preferences
 		if(backbag > 3 || backbag < 1)
 			backbag = 1 //Same as above
 		character.backbag = backbag
+
 
 		/*
 		//Debugging report to track down a bug, which randomly assigned the plural gender to people.

@@ -39,7 +39,6 @@
 	var/minimal_player_age = 0
 
 /datum/job/proc/equip(var/mob/living/carbon/human/H)
-//	H.real_name = random_name(H.gender)
 	return 1
 
 /datum/job/proc/apply_fingerprints(var/mob/living/carbon/human/H)

@@ -59,11 +59,15 @@
 					else if (prob(8))
 						new /obj/item/device/radio/intercom(locate(i,j,z))
 					else if (prob(6))
-						new /obj/machinery/power/apc(locate(i,j,z))
+						new /obj/machinery/power/apc(locate(i,(j+1),z))
 					else if (prob(6))
 						new /obj/machinery/firealarm(locate(i,j,z))
 					else if (prob(6))
 						new /obj/machinery/alarm(locate(i,j,z))
+					else if (prob(6))
+						new /obj/machinery/camera/all(locate(i,(j-1),z))
+					else if (prob(6))
+						new /obj/machinery/newscaster(locate(i,j,z))
 					else if (prob(3))
 						new /obj/structure/closet/fireaxecabinet(locate(i,j,z))
 					else if (prob(3))
@@ -71,26 +75,26 @@
 						new /obj/item/weapon/reagent_containers/spray/pepper(locate(i,j,z))
 					else if (prob(3))
 						new /obj/machinery/vending/wallmed1(locate(i,j,z))
-					else if (prob(1))
+					else if (prob(3))
 						new /obj/structure/reagent_dispensers/virusfood(locate(i,j,z))
 						new /obj/item/weapon/reagent_containers/glass/bottle/retrovirus(locate(i,j,z))
 				else if (prob(15))
 					new /turf/simulated/floor/plating(locate(i,j,z))
 					spawn_random_atom("/obj/machinery/door/airlock", locate(i,j,z))
 				else
-					new /obj/effect/windowspawn(locate(i,j,z))
+					new /obj/effect/windowspawn/reinforced(locate(i,j,z))
 			else
 				new /turf/simulated/floor/station(locate(i,j,z),type)
 				if (prob(2))
-					new /obj/machinery/light{on=1}(locate(i,j,z))
-					new /turf/simulated/wall/r_wall(locate(i,j-1,z))
+					new /obj/machinery/light{on=1}(locate(i,(j+1),z))
+					new /turf/simulated/wall/r_wall(locate(i,j,z))
 				else if (prob(8))
-					new /obj/machinery/light/small{on=1}(locate(i,j,z))
-					new /turf/simulated/wall(locate(i,j-1,z))
+					new /obj/machinery/light/small{on=1}(locate(i,(j+1),z))
+					new /turf/simulated/wall(locate(i,j,z))
 			//	if (prob(0.3))
 			//		explosion_rec(locate(i,j,z), rand(0,30))
-			//	if (prob(15))
-			//		new /obj/effect/stationloot(locate(i,j,z))
+				if (prob(15))
+					new /obj/effect/stationloot(locate(i,j,z))
 
 	del(src)
 
@@ -618,6 +622,9 @@
 							/obj/effect/workplace_chemical									= 6,
 							/obj/effect/workplace_dnascanner								= 6,
 							/obj/effect/workplace_furnacespawn								= 6,
+							/obj/effect/workplace_library									= 6,
+							/obj/effect/workplace_bar										= 6,
+							/obj/structure/turret/gun_turret								= 5,
 							/obj/structure/sink/puddle										= 4
 							)
 
@@ -666,6 +673,18 @@ proc/spawn_random_atom(var/object as text, turf/location as turf)
 	WIN4.dir = WEST
 	new /obj/structure/grille (src.loc)
 	del(src)
+
+/obj/effect/windowspawn/basic
+	spawnthing = list( /obj/structure/window/basic )
+
+/obj/effect/windowspawn/reinforced
+	spawnthing = list( /obj/structure/window/reinforced )
+
+/obj/effect/windowspawn/tinted
+	spawnthing = list( /obj/structure/window/reinforced/tinted )
+
+/obj/effect/windowspawn/frosted
+	spawnthing = list( /obj/structure/window/reinforced/tinted/frosted )
 
 
 /obj/effect/cultstation
@@ -1162,6 +1181,22 @@ proc/spawn_random_atom(var/object as text, turf/location as turf)
 	new /obj/structure/closet/secure_closet/freezer/fridge(locate((location.x+1),location.y,location.z))
 	new /obj/machinery/processor(locate((location.x-1),location.y,location.z))
 	new /obj/item/weapon/kitchenknife(locate((location.x-1),location.y,location.z))
+
+	del(src)
+
+/obj/effect/workplace_library/New(turf/location as turf)
+	new /obj/machinery/bookbinder(locate((location.x-1),location.y,location.z))
+	new /obj/machinery/librarycomp(locate(location.x,location.y,location.z))
+	new /obj/machinery/photocopier(locate((location.x+1),location.y,location.z))
+
+	del(src)
+
+/obj/effect/workplace_bar/New(turf/location as turf)
+	new /obj/structure/reagent_dispensers/beerkeg(locate((location.x-1),location.y,location.z))
+	new /obj/structure/table/woodentable(locate(location.x,location.y,location.z))
+	new /obj/item/weapon/book/manual/barman_recipes(locate(location.x,location.y,location.z))
+	new /obj/item/weapon/reagent_containers/food/drinks/shaker(locate(location.x,location.y,location.z))
+	new /obj/machinery/vending/boozeomat(locate((location.x+1),location.y,location.z))
 
 	del(src)
 

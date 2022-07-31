@@ -473,7 +473,7 @@
 
 
 /obj/structure/turret/gun_turret
-	name = "Gun Turret"
+	name = "gun turret"
 	density = 1
 	anchored = 1
 	var/cooldown = 20
@@ -484,7 +484,7 @@
 	var/atom/cur_target
 	var/scan_range = 7
 	var/health = 40
-	var/list/scan_for = list("human"=0,"cyborg"=0,"mecha"=0,"alien"=1)
+	var/list/scan_for = list("human"=0,"cyborg"=0,"mecha"=0,"alien"=1, "hostile"=1)
 	var/on = 0
 	icon = 'icons/obj/turrets.dmi'
 	icon_state = "gun_turret"
@@ -608,6 +608,11 @@
 				pos_targets += M
 		if(scan_for["alien"])
 			for(var/mob/living/carbon/alien/M in oview(scan_range,src))
+				if(M.stat || M.lying || M in exclude)
+					continue
+				pos_targets += M
+		if(scan_for["hostile"])
+			for(var/mob/living/simple_animal/hostile/M in oview(scan_range,src))
 				if(M.stat || M.lying || M in exclude)
 					continue
 				pos_targets += M

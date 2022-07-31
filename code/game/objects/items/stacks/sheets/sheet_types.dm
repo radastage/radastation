@@ -135,6 +135,7 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	new/datum/stack_recipe("cyborg visor", /obj/item/clothing/mask/gas/cyborg), \
 	new/datum/stack_recipe("armored robe", /obj/item/clothing/suit/cultrobes/alt, 4, time = 35), \
 	new/datum/stack_recipe("heavy armor", /obj/item/clothing/suit/armor/heavy, 5, time = 35), \
+	new/datum/stack_recipe("gun turret", /obj/structure/turret/gun_turret, 5, time = 60, one_per_turf = 1, on_floor = 1), \
 	null, \
 	new/datum/stack_recipe("autolathe", /obj/machinery/autolathe, 5, time = 60, one_per_turf = 1), \
 	new/datum/stack_recipe("microwave oven", /obj/machinery/microwave, 3, time = 35, one_per_turf = 1), \

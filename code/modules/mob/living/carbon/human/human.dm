@@ -33,15 +33,17 @@
 		internal_organs += new /obj/item/organ/appendix
 		internal_organs += new /obj/item/organ/heart
 		internal_organs += new /obj/item/organ/brain
-		create_dna(src)
+
+		if (!dna)
+			create_dna(src)
+
 		underwear = random_underwear(gender)
 		skin_tone = random_skin_tone()
 		h_style = random_hair_style(gender)
 		h_color = random_short_color()
 		eye_color = random_eye_color()
 		age = rand(AGE_MIN,AGE_MAX)
-		real_name = random_name(gender)
-		name = real_name
+
 		if (gender == MALE)
 			f_style = random_facial_hair_style(gender)
 		else
@@ -51,6 +53,17 @@
 
 		update_body()
 		update_hair()
+
+		if (real_name == "Unknown")
+			real_name = random_name(gender)
+			name = real_name
+
+		if (client && dna)
+			real_name = client.prefs.real_name
+			name = real_name
+			dna.real_name = real_name
+
+
 //	update_body_parts()
 
 		for(var/i=0;i<7;i++) // 2 for medHUDs and 5 for secHUDs

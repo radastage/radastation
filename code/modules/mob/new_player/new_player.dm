@@ -330,8 +330,11 @@
 		ready_dna(new_character, client.prefs.b_type)
 
 		new_character.key = key		//Manually transfer the key to log them in
-		new_character.name = real_name
-
+/*		new_character.real_name = client.prefs.real_name
+		new_character.name = client.prefs.real_name //FUCK THIS SHIT IT WAS BREAKING NAMES just sayin
+		if(new_character.dna)
+			new_character.dna.real_name = client.prefs.real_name
+		*/
 		return new_character
 
 

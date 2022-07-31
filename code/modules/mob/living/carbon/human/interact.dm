@@ -1,4 +1,4 @@
-/mob/living/carbon/human/verb/interact()
+/mob/living/verb/interact()
 	set category = "Object"
 	set name = "Interact"
 	set desc = "Interact with someone in a sexual way."
@@ -89,10 +89,12 @@
 			sexverb = pick("thrusts", "slides", "puts", "stuffs", "sticks")
 			bodymisc = pick("dick", "cock", "penis")
 			var/feet = pick("toes", "feet")
-			if(src:wear_suit && (src:wear_suit.body_parts_covered&FEET))
-				feet = "shoes"
-			if(src.shoes)
-				feet = src.shoes.name
+			if(ishuman(src))
+				if(src:wear_suit)
+					feet = "shoes"
+			if(ishuman(src))
+				if(src:shoes)
+					feet = src:shoes.name
 			usr.emote("me",1,sexverb + " his " + bodymisc + " between " + src.name + "'s " + feet + "!")
 			if(prob(25))
 				usr.emote("moan")
@@ -100,6 +102,7 @@
 				usr.emote("drool")
 				usr.emote("me",1,"cums right on the " + src.name + "'s feet!")
 				usr.cum()
+
 		if("Thighjob")
 			sexverb = pick("thrusts", "slides", "puts", "stuffs", "sticks")
 			bodymisc = pick("dick", "cock", "penis")
@@ -135,10 +138,12 @@
 		if("Lick Feet")
 			sexverb = "licks"
 			var/feet = pick("toes", "feet")
-			if(src:wear_suit && (src:wear_suit.body_parts_covered&FEET))
-				feet = "shoes"
-			if(src.shoes)
-				feet = src.shoes.name
+			if(ishuman(src))
+				if(src:wear_suit)
+					feet = "shoes"
+			if(ishuman(src))
+				if(src:shoes)
+					feet = src:shoes.name
 			usr.emote("me",1,sexverb + " " + src.name + "'s " + feet + "!")
 		if("Finger Ass")
 			sexverb = pick("thrusts", "slides", "puts", "stuffs", "sticks")
@@ -315,9 +320,10 @@
 	if(gender == FEMALE)
 		playsound(src.loc, 'sound/interact/cum_f.ogg', 50, 1, -1)
 
-/atom/verb/dice()
-	set name = "Roll"
+/mob/verb/dice()
+	set name = "Roll D100"
 	set category = "IC"
 	var/result = rand(1, 100)
-	usr.visible_message("<span class='notice'>[usr] has rolled [result].</span>")
+	if(!usr.stat)
+		usr.visible_message("<span class='notice'>[usr] has rolled [result].</span>")
 

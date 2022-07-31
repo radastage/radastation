@@ -39,6 +39,7 @@
 	if (src.digitalcamo)
 		msg += "It is repulsively uncanny!\n"
 
+	msg += "[desc]\n"
 	msg += "*---------*</span>"
 
 	usr << msg
