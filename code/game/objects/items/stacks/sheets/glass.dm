@@ -146,14 +146,14 @@ var/global/list/datum/stack_recipe/glass_recipes = list ( \
 	origin_tech = "materials=2"
 
 var/global/list/datum/stack_recipe/rglass_recipes = list ( \
+	new/datum/stack_recipe("welding goggles", /obj/item/clothing/glasses/welding, 2), \
 	new/datum/stack_recipe("welding helmet", /obj/item/clothing/head/welding, 3), \
 	new/datum/stack_recipe("riot shield", /obj/item/weapon/shield/riot, 3), \
-	new/datum/stack_recipe("sunglasses", /obj/item/clothing/glasses/sunglasses, 2), \
-	new/datum/stack_recipe("big sunglasses", /obj/item/clothing/glasses/sunglasses/big, 3), \
+	new/datum/stack_recipe("sunglasses", /obj/item/clothing/glasses/sunglasses), \
+	new/datum/stack_recipe("big sunglasses", /obj/item/clothing/glasses/sunglasses/big, 2), \
 	new/datum/stack_recipe("syringe gun", /obj/item/weapon/gun/syringe, 3), \
 	new/datum/stack_recipe("station bounced radio", /obj/item/device/radio/off, 2), \
 	new/datum/stack_recipe("station intercom", /obj/item/device/radio/intercom, 4, time = 75, one_per_turf = 1, on_floor = 1), \
-/*	new/datum/stack_recipe("welding tool", /obj/item/weapon/weldingtool/empty), \ */
 	new/datum/stack_recipe("desk lamp", /obj/item/device/flashlight/lamp, 2), \
 	new/datum/stack_recipe("lantern", /obj/item/device/flashlight/lantern, 2), \
 	new/datum/stack_recipe("hydroponics tray", /obj/machinery/hydroponics, 4, time = 25, one_per_turf = 1, on_floor = 1), \

@@ -384,7 +384,7 @@
 	src.update_hair()
 
 
-/mob/living/carbon/human/verb/rename()
+/mob/verb/rename()
 	set category = "IC"
 	set name = "Rename"
 	set desc = "Change your name to something else."

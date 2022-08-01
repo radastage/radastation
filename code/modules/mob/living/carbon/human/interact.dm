@@ -27,16 +27,16 @@
 		orientation = "femdom"
 
 	if(orientation == "gay")
-		position = input("What would you like to do with them?") in list("Fuck Ass", "Fuck Mouth", "Footjob", "Thighjob", "Kiss", "Jerk Off", "Lick Feet", "Finger Ass", "Suck Them", "Lick Ass", "Mount Ass", "Slap Ass", "Insert Object (Anal)")
+		position = input("What would you like to do with them?") in list("Fuck Ass", "Fuck Mouth", "Footjob", "Give Footjob", "Thighjob", "Kiss", "Jerk Off", "Lick Feet", "Finger Ass", "Suck Them", "Lick Ass", "Mount Ass", "Slap Ass", "Insert Object (Anal)")
 
 	if(orientation == "lesbian")
-		position = input("What would you like to do with them?") in list("Fuck Mouth", "Kiss", "Jerk Off", "Lick Feet", "Finger Ass", "Suck Them", "Lick Ass", "Slap Ass", "Insert Object (Anal)", "Insert Object (Vaginal)")
+		position = input("What would you like to do with them?") in list("Fuck Mouth", "Kiss", "Jerk Off", "Lick Feet", "Give Footjob", "Finger Ass", "Suck Them", "Lick Ass", "Slap Ass", "Insert Object (Anal)", "Insert Object (Vaginal)")
 
 	if(orientation == "maledom")
-		position = input("What would you like to do with them?") in list("Fuck Ass", "Fuck Mouth", "Footjob", "Thighjob", "Kiss", "Jerk Off", "Lick Feet", "Finger Ass", "Suck Them", "Lick Ass", "Fuck Vagina", "Titjob", "Slap Ass", "Insert Object (Anal)", "Insert Object (Vaginal)")
+		position = input("What would you like to do with them?") in list("Fuck Ass", "Fuck Mouth", "Footjob", "Give Footjob", "Thighjob", "Kiss", "Jerk Off", "Lick Feet", "Finger Ass", "Suck Them", "Lick Ass", "Fuck Vagina", "Titjob", "Slap Ass", "Insert Object (Anal)", "Insert Object (Vaginal)")
 
 	if(orientation == "femdom")
-		position = input("What would you like to do with them?") in list("Fuck Mouth", "Kiss", "Jerk Off", "Lick Feet", "Finger Ass", "Suck Them", "Lick Ass", "Mount Vagina", "Mount Ass", "Slap Ass", "Insert Object (Anal)")
+		position = input("What would you like to do with them?") in list("Fuck Mouth", "Kiss", "Jerk Off", "Lick Feet", "Give Footjob", "Finger Ass", "Suck Them", "Lick Ass", "Mount Vagina", "Mount Ass", "Slap Ass", "Insert Object (Anal)")
 
 	switch(position)
 		if("Fuck Ass")
@@ -102,6 +102,24 @@
 				usr.emote("drool")
 				usr.emote("me",1,"cums right on the " + src.name + "'s feet!")
 				usr.cum()
+
+		if("Give Footjob")
+			sexverb = pick("embraces", "rubs", "pokes")
+			bodymisc = (src.gender == FEMALE) ? pick("vagina", "pussy") : pick("dick", "cock", "penis")
+			var/feet = pick("toes", "feet")
+			if(ishuman(usr))
+				if(usr:wear_suit)
+					feet = "shoes"
+			if(ishuman(usr))
+				if(usr:shoes)
+					feet = usr:shoes.name
+			usr.emote("me",1,sexverb + " " + src.name + "'s " + bodymisc + " using their " + feet + "!")
+			if(prob(25))
+				src.emote("moan")
+			if(prob(5))
+				src.emote("drool")
+				src.emote("me",1,"cums right on the " + usr.name + "'s feet!")
+				src.cum()
 
 		if("Thighjob")
 			sexverb = pick("thrusts", "slides", "puts", "stuffs", "sticks")

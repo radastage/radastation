@@ -55,10 +55,10 @@
 		return
 	if(in_range(usr, src))
 		if( !(ishuman(usr) || isobserver(usr) || issilicon(usr)) )
-			usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>", "window=[name]")
+			usr << browse({"<HTML><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>"}, "window=[name]")
 			onclose(usr, "[name]")
 		else
-			usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>", "window=[name]")
+			usr << browse({"<HTML><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>"}, "window=[name]")
 			onclose(usr, "[name]")
 	else
 		usr << "<span class='notice'>It is too far away.</span>"
@@ -96,10 +96,10 @@
 	else //cyborg or AI not seeing through a camera
 		dist = get_dist(src, user)
 	if(dist < 2)
-		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>", "window=[name]")
+		usr << browse({"<HTML><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>"}, "window=[name]")
 		onclose(usr, "[name]")
 	else
-		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>", "window=[name]")
+		usr << browse({"<HTML><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>"}, "window=[name]")
 		onclose(usr, "[name]")
 
 
@@ -159,7 +159,7 @@
 
 
 /obj/item/weapon/paper/proc/parsepencode(t, obj/item/weapon/pen/P, mob/user, iscrayon = 0)
-//	t = copytext(sanitize(t),1,MAX_MESSAGE_LEN)
+	t = copytext(sanitize(t),1,MAX_MESSAGE_LEN)
 
 	t = replacetext(t, "\[center\]", "<center>")
 	t = replacetext(t, "\[/center\]", "</center>")
@@ -194,7 +194,7 @@
 
 		t = "<font face=\"[crayonfont]\" color=[P.colour]><b>[t]</b></font>"
 
-//	t = replacetext(t, "#", "") // Junk converted to nothing!
+	t = replacetext(t, "#", "") // Junk converted to nothing!
 
 //Count the fields
 	var/laststart = 1
@@ -237,7 +237,7 @@
 
 	if(href_list["write"])
 		var/id = href_list["write"]
-		var/t =  strip_html_simple(input("Enter what you want to write:", "Write", null, null)  as message, MAX_MESSAGE_LEN)
+		var/t =  sanitize(input("Enter what you want to write:", "Write", null, null)  as message, MAX_MESSAGE_LEN)
 		var/obj/item/i = usr.get_active_hand()	//Check to see if he still got that darn pen, also check if he's using a crayon or pen.
 		var/iscrayon = 0
 		if(!istype(i, /obj/item/weapon/pen))
@@ -256,7 +256,7 @@
 			info += t // Oh, he wants to edit to the end of the file, let him.
 			updateinfolinks()
 
-		usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links]<HR>[stamps]</BODY></HTML>", "window=[name]") // Update the window
+		usr << browse({"<HTML><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links]<HR>[stamps]</BODY></HTML>"}, "window=[name]") // Update the window
 		update_icon()
 
 
@@ -271,7 +271,7 @@
 		clown = 1
 
 	if(istype(P, /obj/item/weapon/pen) || istype(P, /obj/item/toy/crayon))
-		user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links]<HR>[stamps]</BODY></HTML>", "window=[name]")
+		user << browse({"<HTML><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links]<HR>[stamps]</BODY></HTML>"}, "window=[name]")
 		return
 
 	else if(istype(P, /obj/item/weapon/stamp))

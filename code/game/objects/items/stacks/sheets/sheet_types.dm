@@ -130,8 +130,8 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	null, \
 	new/datum/stack_recipe("gas mask", /obj/item/clothing/mask/gas), \
 	new/datum/stack_recipe("gas mask (alt)", /obj/item/clothing/mask/gas/alt), \
-	new/datum/stack_recipe("space suit", /obj/item/clothing/suit/space, 5, time = 1000), \
-	new/datum/stack_recipe("space helmet", /obj/item/clothing/head/helmet/space, 3, time = 1000), \
+	new/datum/stack_recipe("space suit", /obj/item/clothing/suit/space, 5, time = 300), \
+	new/datum/stack_recipe("space helmet", /obj/item/clothing/head/helmet/space, 3, time = 300), \
 	new/datum/stack_recipe("cyborg visor", /obj/item/clothing/mask/gas/cyborg), \
 	new/datum/stack_recipe("armored robe", /obj/item/clothing/suit/cultrobes/alt, 4, time = 35), \
 	new/datum/stack_recipe("heavy armor", /obj/item/clothing/suit/armor/heavy, 5, time = 35), \
@@ -339,6 +339,7 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	new/datum/stack_recipe("film cartridge", /obj/item/device/camera_film), \
 	new/datum/stack_recipe("photo album", /obj/item/weapon/storage/photo_album), \
 	new/datum/stack_recipe("festive paper hat", /obj/item/clothing/head/festive), \
+	new/datum/stack_recipe("pill bottle", /obj/item/weapon/storage/pill_bottle), \
 	new/datum/stack_recipe("notice board", /obj/structure/noticeboard, 2, time = 10, one_per_turf = 1), \
 )
 

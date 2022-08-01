@@ -73,10 +73,10 @@
 	var/title_attributes = "class='uiTitle'"
 	if (title_image)
 		title_attributes = "class='uiTitle icon' style='background-image: url([title_image]);'"
-
+//ok guys so below is THE SHIT that is responsible for ruining cyrillic symbols (at least I hope so, it was ISO-8859-1)
 	return {"<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<head>
 		[head_content]
 	</head>
