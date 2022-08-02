@@ -467,6 +467,10 @@ var/global/list/g_fancy_list_of_safe_types = null
 	set name = "Assume direct control"
 	set desc = "Direct intervention"
 
+	if( M.client && !isobserver(M) )
+		var/mob/dead/observer/X = new/mob/dead/observer(M.loc)
+		X.ckey = M.ckey
+
 	message_admins("\blue [key_name_admin(usr)] assumed direct control of [M].", 1)
 	log_admin("[key_name(usr)] assumed direct control of [M].")
 	var/mob/adminmob = src.mob

@@ -206,6 +206,7 @@ var/list/admin_verbs_hideable = list(
 	if(holder)
 		verbs += admin_verbs_default
 		verbs += /client/proc/cmd_assume_direct_control
+		verbs += admin_verbs_rejuv
 		if(holder.rights & R_BUILDMODE)		verbs += /client/proc/togglebuildmodeself
 		if(holder.rights & R_ADMIN)			verbs += admin_verbs_admin
 		if(holder.rights & R_BAN)			verbs += admin_verbs_ban
@@ -215,7 +216,7 @@ var/list/admin_verbs_hideable = list(
 		if(holder.rights & R_POSSESS)		verbs += admin_verbs_possess
 		if(holder.rights & R_PERMISSIONS)	verbs += admin_verbs_permissions
 		if(holder.rights & R_STEALTH)		verbs += /client/proc/stealth
-		if(holder.rights & R_REJUVINATE)	verbs += admin_verbs_rejuv
+//		if(holder.rights & R_REJUVINATE)	verbs += admin_verbs_rejuv
 		if(holder.rights & R_SOUNDS)		verbs += admin_verbs_sounds
 		if(holder.rights & R_SPAWN)			verbs += admin_verbs_spawn
 

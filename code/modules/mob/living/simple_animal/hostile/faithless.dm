@@ -33,7 +33,7 @@
 
 /mob/living/simple_animal/hostile/faithless/deity
 	name = "Deity"
-	desc = "A strange entity, emitting bright aura around its body. It"
+	desc = "A strange entity, emitting bright aura around its body."
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "god"
 	health = 400
@@ -55,6 +55,11 @@
 	maxHealth = 200
 	attack_sound = 'sound/hallucinations/growl2.ogg'
 
+/mob/living/simple_animal/hostile/faithless/horror/Die()
+	playsound(src.loc, 'sound/hallucinations/far_noise.ogg', 50, 1, -1)
+	emote("explodes into pieces!")
+	new /obj/effect/gibspawner/generic(src.loc)
+	del(src)
 
 /mob/living/simple_animal/hostile/faithless/deity/FindTarget()
 	. = ..()
@@ -63,14 +68,13 @@
 
 /mob/living/simple_animal/hostile/faithless/deity/New()
 	..()
-	src.name = random_name_skrell()
 	src.icon += rgb(rand(0,155), rand(0,155), rand(0,155))
 	if(prob(15))
 		src.desc = "How can you kill a god?"
 
 /mob/living/simple_animal/hostile/faithless/deity/Die()
 	playsound(src.loc, 'sound/hallucinations/wail.ogg', 50, 1, -1)
-	emote("is devoured by reality!")
+	emote("is devoured by tear in reality!")
 	new /obj/effect/expl_particles(src.loc)
 	del(src)
 

@@ -509,3 +509,26 @@ proc/establish_db_connection()
 //			O += file(""data/player_saves/[copytext(ckey,1,2)]/[ckey]/[f]")
 			usr << "\blue Found character: [f]"
 
+/mob/verb/delete_character()
+	set name = "Delete Character"
+	set category = "Preferences"
+
+	if(!( usr ))
+		return
+
+	if(src.real_name == "preferences")
+		usr << "Ha ha very funny name but NO."
+		return
+	if(src.real_name == "Unknown")
+		usr << "Try getting yourself a name, dummy."
+		return
+
+	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[ckey]/[src.real_name].sav"))
+		usr << "\red [src.real_name].sav does not exist! Try saving or renaming first!"
+	else
+		world.log<<"[src.real_name] tried to save but failed."
+		var/confirm = input("Are you sure you wish to delete?", "Character delete") in list("Yes", "No")
+		if(confirm == "Yes")
+			fdel("data/player_saves/[copytext(ckey,1,2)]/[ckey]/[src.real_name].sav")
+			world.log<<"[src.real_name] deleted."
+			usr << "\blue [src.real_name] deleted!"

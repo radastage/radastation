@@ -119,12 +119,14 @@ Please contact me on #coderbus IRC. ~Carnie x
 			overlays += ogreskin
 
 		if("lizard")
-			if(age<21)
+			if(age>21)
 				base_icon_state = "[dna.mutantrace]_[(gender == FEMALE) ? "f" : "m"]_1"
-			if(age>=21 && age <31)
+			else if(age>=31 && age <41)
 				base_icon_state = "[dna.mutantrace]_[(gender == FEMALE) ? "f" : "m"]_2"
-			if(age>=31 && age < 41)
+			else if (age>=41 && age < 51)
 				base_icon_state = "[dna.mutantrace]_[(gender == FEMALE) ? "f" : "m"]_3"
+			else
+				base_icon_state = "[dna.mutantrace]_[(gender == FEMALE) ? "f" : "m"]"
 
 		if("plasmaman")
 			base_icon_state = "plasmaman"

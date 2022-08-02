@@ -50,6 +50,7 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	new/datum/stack_recipe("sledgehammer", /obj/item/weapon/pickaxe/hammer, 4), \
 	new/datum/stack_recipe("scythe", /obj/item/weapon/scythe, 4), \
 	new/datum/stack_recipe("cane", /obj/item/weapon/cane), \
+	new/datum/stack_recipe("claymore", /obj/item/weapon/claymore, 5, time = 100), \
 	new/datum/stack_recipe("hatchet", /obj/item/weapon/hatchet, 4), \
 	new/datum/stack_recipe("fire alarm frame", /obj/item/firealarm_frame, 2), \
 	new/datum/stack_recipe("recharger frame", /obj/item/recharger_frame), \
@@ -340,6 +341,7 @@ var/global/list/datum/stack_recipe/cardboard_recipes = list ( \
 	new/datum/stack_recipe("photo album", /obj/item/weapon/storage/photo_album), \
 	new/datum/stack_recipe("festive paper hat", /obj/item/clothing/head/festive), \
 	new/datum/stack_recipe("pill bottle", /obj/item/weapon/storage/pill_bottle), \
+	new/datum/stack_recipe("paper cup", /obj/item/weapon/reagent_containers/food/drinks/sillycup), \
 	new/datum/stack_recipe("notice board", /obj/structure/noticeboard, 2, time = 10, one_per_turf = 1), \
 )
 

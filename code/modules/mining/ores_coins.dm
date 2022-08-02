@@ -4,21 +4,42 @@
 	name = "Rock"
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "ore"
+	var/smelt_type
+
+/obj/item/weapon/ore/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/weapon/weldingtool) && smelt_type)
+		var/obj/item/weapon/weldingtool/WT = W
+		if (WT.remove_fuel(0,user))
+			user << "\blue Smelting the ore using [WT]."
+			if(do_after(user, 20))
+				if(!src || !WT.isOn()) return
+				playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
+				user << "\green You smelt [src]."
+				new smelt_type(src.loc)
+				del(src)
+		else
+			user << "\blue You need more welding fuel to complete this task."
+			return 1
+	..()
 
 /obj/item/weapon/ore/uranium
 	name = "Uranium ore"
 	icon_state = "Uranium ore"
 	origin_tech = "materials=5"
+	smelt_type = /obj/item/stack/sheet/mineral/uranium
+
 
 /obj/item/weapon/ore/iron
 	name = "Iron ore"
 	icon_state = "Iron ore"
 	origin_tech = "materials=1"
+	smelt_type = /obj/item/stack/sheet/metal
 
 /obj/item/weapon/ore/glass
 	name = "Sand"
 	icon_state = "Glass ore"
 	origin_tech = "materials=1"
+	smelt_type = /obj/item/stack/sheet/glass
 
 	attack_self(mob/living/user as mob) //It's magic I ain't gonna explain how instant conversion with no tool works. -- Urist
 		var/location = get_turf(user)
@@ -32,26 +53,31 @@
 	name = "Plasma ore"
 	icon_state = "Plasma ore"
 	origin_tech = "materials=2"
+	smelt_type = /obj/item/stack/sheet/mineral/plasma
 
 /obj/item/weapon/ore/silver
 	name = "Silver ore"
 	icon_state = "Silver ore"
 	origin_tech = "materials=3"
+	smelt_type = /obj/item/stack/sheet/mineral/silver
 
 /obj/item/weapon/ore/gold
 	name = "Gold ore"
 	icon_state = "Gold ore"
 	origin_tech = "materials=4"
+	smelt_type = /obj/item/stack/sheet/mineral/gold
 
 /obj/item/weapon/ore/diamond
 	name = "Diamond ore"
 	icon_state = "Diamond ore"
 	origin_tech = "materials=6"
+	smelt_type = /obj/item/stack/sheet/mineral/diamond
 
 /obj/item/weapon/ore/clown
 	name = "Bananium ore"
 	icon_state = "Clown ore"
 	origin_tech = "materials=4"
+	smelt_type = /obj/item/stack/sheet/mineral/clown
 
 /obj/item/weapon/ore/slag
 	name = "Slag"

@@ -110,6 +110,7 @@
 					dat += "Other<BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=kitty;cost=30'>kitty ears</A> <FONT COLOR = blue>(30)</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=cloth;cost=40'>Cloth</A> <FONT COLOR=blue>(40)</FONT><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=cardboard;cost=40'>Cardboard</A> <FONT COLOR=blue>(40)</FONT><BR>"
 					//dat += "<A href='?src=\ref[src];action=create;item=monkey;cost=500'>Monkey</A> <FONT COLOR=blue>(500)</FONT><BR>"
 				else
 					dat += "<BR><FONT COLOR=red>No beaker inside. Please insert a beaker.</FONT><BR>"
@@ -213,6 +214,8 @@
 			new/obj/item/clothing/suit/armor/hos/jensen(src.loc)
 		if("cloth")
 			new/obj/item/stack/sheet/cloth(src.loc)
+		if("cardboard")
+			new/obj/item/stack/sheet/cardboard(src.loc)
 		if("hoshat")
 			new/obj/item/clothing/head/helmet/HoS(src.loc)
 		if("kitty")

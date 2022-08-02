@@ -163,7 +163,7 @@ proc/isorgan(A)
 
 /proc/stars(n, pr)
 	if (pr == null)
-		pr = 25
+		pr = 75
 	if (pr <= 0)
 		return null
 	else

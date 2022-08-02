@@ -81,6 +81,11 @@
 				else if (prob(15))
 					new /turf/simulated/floor/plating(locate(i,j,z))
 					spawn_random_atom("/obj/machinery/door/airlock", locate(i,j,z))
+				else if (prob(3))
+					new /turf/simulated/floor/plating(locate(i,j,z))
+					new /obj/machinery/shieldgen{anchored=1}(locate(i,j,z))
+					new /obj/machinery/door/window/northright(locate(i,j,z))
+					new /obj/machinery/door/window/southleft(locate(i,j,z))
 				else
 					new /obj/effect/windowspawn/reinforced(locate(i,j,z))
 			else
@@ -93,8 +98,12 @@
 					new /turf/simulated/wall(locate(i,j,z))
 			//	if (prob(0.3))
 			//		explosion_rec(locate(i,j,z), rand(0,30))
-				if (prob(15))
+				else if (prob(15))
 					new /obj/effect/stationloot(locate(i,j,z))
+				else if (prob(2))
+					new /obj/machinery/atmospherics/unary/vent_pump(locate(i,j,z))
+				else if (prob(2))
+					new /obj/machinery/atmospherics/unary/vent_scrubber(locate(i,j,z))
 
 	del(src)
 
@@ -625,6 +634,7 @@
 							/obj/effect/workplace_library									= 6,
 							/obj/effect/workplace_bar										= 6,
 							/obj/structure/turret/gun_turret								= 5,
+							/obj/effect/workplace_shield									= 5,
 							/obj/structure/sink/puddle										= 4
 							)
 
@@ -1200,6 +1210,9 @@ proc/spawn_random_atom(var/object as text, turf/location as turf)
 
 	del(src)
 
+/obj/effect/workplace_shield/New(turf/location as turf)
+	new /obj/machinery/shieldwallgen(locate((location.x-1),location.y,location.z))
+	new /obj/machinery/shieldwallgen(locate((location.x+1),location.y,location.z))
 
 /obj/effect/asteroidloot
 	var/spawnthis = null

@@ -379,6 +379,7 @@
 	if(!anchored)
 		power = 0
 		return 0
+/*
 	var/turf/T = src.loc
 
 	var/obj/structure/cable/C = T.get_cable_node()
@@ -388,7 +389,7 @@
 	if(!PN)
 		power = 0
 		return 0
-
+*/
 //	var/surplus = max(PN.avail-PN.load, 0)
 //	var/shieldload = min(rand(50,200), surplus)
 //	if(shieldload==0 && !storedpower)		// no cable or no power, and no power stored
@@ -409,9 +410,10 @@
 	if(src.locked && !istype(user, /mob/living/silicon))
 		user << "\red The controls are locked!"
 		return 1
-	if(power != 1)
+
+/*	if(power != 1)
 		user << "\red The shield generator needs to be powered by wire underneath."
-		return 1
+		return 1 */
 
 	if(src.active >= 1)
 		src.active = 0
