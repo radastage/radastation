@@ -775,7 +775,7 @@
 				update_inv_wear_suit()
 
 		// nutrition decrease
-		if (nutrition > 0 && stat != 2)
+		if (nutrition > 0 && stat != 2 && client && !client.is_afk() )
 			nutrition = max (0, nutrition - HUNGER_FACTOR)
 			if (prob(2))
 				spawn(0)

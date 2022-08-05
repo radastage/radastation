@@ -86,6 +86,8 @@
 					new /obj/machinery/shieldgen{anchored=1}(locate(i,j,z))
 					new /obj/machinery/door/window/northright(locate(i,j,z))
 					new /obj/machinery/door/window/southleft(locate(i,j,z))
+					new /obj/machinery/door/window/eastright(locate(i,j,z))
+					new /obj/machinery/door/window/westleft(locate(i,j,z))
 				else
 					new /obj/effect/windowspawn/reinforced(locate(i,j,z))
 			else
