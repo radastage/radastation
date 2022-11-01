@@ -385,6 +385,7 @@
 	desc = "Keep away from fire."
 	icon_state = "wood_tableparts"
 	flags = null
+	m_amt = 0
 
 /obj/item/weapon/module
 	icon = 'icons/obj/module.dmi'

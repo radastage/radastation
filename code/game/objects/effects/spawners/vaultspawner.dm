@@ -58,6 +58,8 @@
 						new /obj/structure/extinguisher_cabinet(locate(i,j,z))
 					else if (prob(8))
 						new /obj/item/device/radio/intercom(locate(i,j,z))
+					else if (prob(8))
+						new /obj/machinery/light_switch(locate(i,j,z))
 					else if (prob(6))
 						new /obj/machinery/power/apc(locate(i,(j+1),z))
 					else if (prob(6))
@@ -75,6 +77,8 @@
 						new /obj/item/weapon/reagent_containers/spray/pepper(locate(i,j,z))
 					else if (prob(3))
 						new /obj/machinery/vending/wallmed1(locate(i,j,z))
+					else if (prob(6))
+						new /obj/machinery/status_display(locate(i,j,z))
 					else if (prob(3))
 						new /obj/structure/reagent_dispensers/virusfood(locate(i,j,z))
 						new /obj/item/weapon/reagent_containers/glass/bottle/retrovirus(locate(i,j,z))
@@ -100,8 +104,8 @@
 					new /turf/simulated/wall(locate(i,j,z))
 			//	if (prob(0.3))
 			//		explosion_rec(locate(i,j,z), rand(0,30))
-				else if (prob(15))
-					new /obj/effect/stationloot(locate(i,j,z))
+			//	else if (prob(15))
+			//		new /obj/effect/stationloot(locate(i,j,z))
 				else if (prob(2))
 					new /obj/machinery/atmospherics/unary/vent_pump(locate(i,j,z))
 				else if (prob(2))
@@ -1216,16 +1220,18 @@ proc/spawn_random_atom(var/object as text, turf/location as turf)
 	new /obj/machinery/shieldwallgen(locate((location.x-1),location.y,location.z))
 	new /obj/machinery/shieldwallgen(locate((location.x+1),location.y,location.z))
 
+	del(src)
+
 /obj/effect/asteroidloot
 	var/spawnthis = null
-	var/list/spawnthing = list( /mob/living/simple_animal/hostile/spawner/hivebot 	= 1,
+	var/list/spawnthing = list( //mob/living/simple_animal/hostile/spawner/hivebot 	= 1,
 								/obj/item/device/flashlight/lantern/on				= 5,
 								/obj/item/weapon/ore/glass							= 5,
 								/mob/living/simple_animal/hostile/creature			= 2,
 								/mob/living/simple_animal/hostile/giant_spider		= 1,
 								/mob/living/simple_animal/hostile/giant_spider/nurse = 1,
 								/mob/living/simple_animal/hostile/giant_spider/hunter = 1,
-								/mob/living/simple_animal/hostile/hivebot/random	= 1,
+								/mob/living/simple_animal/hostile/hivebot/random	= 5,
 								/mob/living/simple_animal/hostile/faithless/horror	= 1,
 								/mob/living/simple_animal/hostile/alien/random		= 1,
 								/mob/living/simple_animal/hostile/carp				= 1

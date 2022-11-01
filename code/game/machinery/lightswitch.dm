@@ -49,16 +49,27 @@
 /obj/machinery/light_switch/attack_hand(mob/user)
 
 	on = !on
+	updateicon()
+	for(var/obj/machinery/light/L in range(6, src))
+		L.on = on
+		L.update_icon()
+		if(L.on)
+			L.luminosity = L.brightness
+		else
+			L.luminosity = 0
+		L.UpdateAffectingLights()
 
-	for(var/area/A in area.master.related)
-		A.lightswitch = on
-		A.updateicon()
+//	for(var/area/A in area.master.related)
+//		A.lightswitch = on
+//		A.updateicon()
 
-		for(var/obj/machinery/light_switch/L in A)
-			L.on = on
-			L.updateicon()
 
-	area.master.power_change()
+
+//		for(var/obj/machinery/light_switch/L in A)
+//			L.on = on
+//			L.updateicon()
+
+//	area.master.power_change()
 
 /obj/machinery/light_switch/power_change()
 

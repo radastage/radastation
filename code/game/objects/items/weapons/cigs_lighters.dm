@@ -29,10 +29,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/weapon/match/process()
 	var/turf/location = get_turf(src)
 	smoketime--
+	luminosity = 3
 	if(smoketime < 1)
 		icon_state = "match_burnt"
 		lit = -1
 		processing_objects.Remove(src)
+		luminosity = 0
 		return
 	if(location)
 		location.hotspot_expose(700, 5)
@@ -160,7 +162,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		var/turf/T = get_turf(src)
 		T.visible_message(flavor_text)
 		processing_objects.Add(src)
-		
+
 		//can't think of any other way to update the overlays :<
 		if(ismob(loc))
 			var/mob/M = loc
@@ -364,7 +366,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 					user.adjustFireLoss(5)
 					user.visible_message("<span class='notice'>After a few attempts, [user] manages to light the [src], they however burn their finger in the process.</span>")
 
-			user.SetLuminosity(user.luminosity + 1)
+			user.SetLuminosity(user.luminosity + 2)
 			processing_objects.Add(src)
 		else
 			lit = 0
@@ -375,7 +377,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			else
 				user.visible_message("<span class='notice'>[user] quietly shuts off the [src].")
 
-			user.SetLuminosity(user.luminosity - 1)
+			user.SetLuminosity(user.luminosity - 2)
 			processing_objects.Remove(src)
 	else
 		return ..()

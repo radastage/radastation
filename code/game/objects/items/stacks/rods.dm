@@ -1,5 +1,5 @@
 var/global/list/datum/stack_recipe/rods_recipes = list ( \
-	new/datum/stack_recipe("grille", /obj/structure/grille, 2, one_per_turf = 1), \
+	new/datum/stack_recipe("grille", /obj/structure/grille, 2, time = 50, one_per_turf = 1), \
 	new/datum/stack_recipe("tank transfer valve", /obj/item/device/transfer_valve), \
 	new/datum/stack_recipe("timer", /obj/item/device/assembly/timer), \
 	new/datum/stack_recipe("proximity sensor", /obj/item/device/assembly/prox_sensor), \
@@ -11,6 +11,7 @@ var/global/list/datum/stack_recipe/rods_recipes = list ( \
 	new/datum/stack_recipe("wrench", /obj/item/weapon/wrench), \
 	new/datum/stack_recipe("screwdriver", /obj/item/weapon/screwdriver), \
 	new/datum/stack_recipe("cable coil", /obj/item/weapon/cable_coil/random), \
+	new/datum/stack_recipe("makeshift lighter", /obj/item/weapon/lighter/random{name="makeshift lighter"}), \
 	new/datum/stack_recipe("pipe", /obj/item/pipe), \
 	)
 

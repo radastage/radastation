@@ -38,6 +38,7 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	new/datum/stack_recipe("bear trap", /obj/item/weapon/legcuffs/beartrap, 2), \
 	new/datum/stack_recipe("spade", /obj/item/weapon/shovel/spade), \
 	new/datum/stack_recipe("kitchen knife", /obj/item/weapon/kitchenknife, 3), \
+	new/datum/stack_recipe("butcher's Cleaver", /obj/item/weapon/butch, 4), \
 	new/datum/stack_recipe("kitchen spike", /obj/structure/kitchenspike, 5, time = 50, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe("light fixture frame", /obj/item/light_fixture_frame, 2), \
 	new/datum/stack_recipe("small light fixture frame", /obj/item/light_fixture_frame/small, 1), \
@@ -50,12 +51,14 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	new/datum/stack_recipe("sledgehammer", /obj/item/weapon/pickaxe/hammer, 4), \
 	new/datum/stack_recipe("scythe", /obj/item/weapon/scythe, 4), \
 	new/datum/stack_recipe("cane", /obj/item/weapon/cane), \
+	new/datum/stack_recipe("razor", /obj/item/weapon/razor{name="razor"}), \
 	new/datum/stack_recipe("claymore", /obj/item/weapon/claymore, 5, time = 100), \
 	new/datum/stack_recipe("hatchet", /obj/item/weapon/hatchet, 4), \
 	new/datum/stack_recipe("fire alarm frame", /obj/item/firealarm_frame, 2), \
 	new/datum/stack_recipe("recharger frame", /obj/item/recharger_frame), \
 	new/datum/stack_recipe("cell charger frame", /obj/item/cell_charger_frame), \
 	new/datum/stack_recipe("stethoscope", /obj/item/clothing/tie/stethoscope), \
+	new/datum/stack_recipe("whetstone", /obj/item/weapon/whetstone), \
 	null, \
 	new/datum/stack_recipe("yellow hardhat", /obj/item/clothing/head/hardhat), \
 	new/datum/stack_recipe("blue hardhat", /obj/item/clothing/head/hardhat/dblue), \
@@ -123,6 +126,7 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	new/datum/stack_recipe("emitter", /obj/machinery/power/emitter, 6, time = 70, one_per_turf = 1), \
 	new/datum/stack_recipe("shield generator", /obj/machinery/shieldwallgen, 6, time = 70, one_per_turf = 1), \
 	new/datum/stack_recipe("power cell", /obj/item/weapon/cell/crap/empty), \
+	new/datum/stack_recipe("plasteel patch", /obj/item/weapon/plasteel_patch), \
 	null, \
 	new/datum/stack_recipe("biogenerator", /obj/machinery/biogenerator, 5, time = 100, one_per_turf = 1), \
 	new/datum/stack_recipe("vendomat", /obj/machinery/vending, 5, time = 100, one_per_turf = 1), \
@@ -157,6 +161,7 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	new/datum/stack_recipe("floor safe", /obj/structure/safe/floor, 2, time = 20, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe("safe", /obj/structure/safe, 2, time = 20, one_per_turf = 1), \
 	null, \
+	new/datum/stack_recipe("light switch", /obj/machinery/light_switch, one_per_turf = 1), \
 	new/datum/stack_recipe("sink", /obj/structure/sink, 3, time = 40, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe("toilet", /obj/structure/toilet, 3, time = 40, one_per_turf = 1, on_floor = 1), \
 	new/datum/stack_recipe("urinal", /obj/structure/urinal, 3, time = 40, one_per_turf = 1, on_floor = 1), \

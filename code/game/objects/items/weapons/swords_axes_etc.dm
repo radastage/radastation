@@ -97,21 +97,23 @@
 	user.attack_log += text("\[[time_stamp()]\] <font color='red'>Used the [src.name] to attack [M.name] ([M.ckey])</font>")
 	log_attack("<font color='red'>[user.name] ([user.ckey]) attacked [M.name] ([M.ckey]) with [src.name] (INTENT: [uppertext(user.a_intent)])</font>")
 
-	if(user.a_intent == "harm" && prob(25))
+	if(user.a_intent == "harm" && prob(10))
 		if(!..()) return
 		playsound(loc, "swing_hit", 50, 1, -1)
 		if(M.stuttering < 8 && !(HULK in M.mutations))
 			M.stuttering = 8
-		M.Stun(8)
-		M.Weaken(8)
+		M.Stun(5)
+		M.Weaken(5)
 		M.visible_message("<span class='danger'>[M] has been beaten with [src] by [user]!</span>", \
 							"<span class='userdanger'>[M] has been beaten with [src] by [user]!</span>")
 	else
+		if(!..()) return
 		playsound(loc, 'sound/weapons/Genhit.ogg', 50, 1, -1)
-		M.Stun(5)
-		M.Weaken(5)
 		M.visible_message("<span class='danger'>[M] has been stunned with [src] by [user]!</span>", \
 							"<span class='userdanger'>[M] has been stunned with [src] by [user]!</span>")
+		if(prob(10))
+			M.Stun(1)
+			M.Weaken(1)
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
