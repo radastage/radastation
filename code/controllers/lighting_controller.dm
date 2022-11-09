@@ -18,18 +18,13 @@ datum/controller/lighting
 	var/changed_turfs_workload_max = 0
 
 datum/controller/lighting/New()
-	Recover()
-	if(lighting_controller)
-		del(lighting_controller)
-		lighting_controller = src
-/*
 	lighting_states = max( 0, length(icon_states(LIGHTING_ICON))-1 )
 	if(lighting_controller != src)
 		if(istype(lighting_controller,/datum/controller/lighting))
 			Recover()	//if we are replacing an existing lighting_controller (due to a crash) we attempt to preserve as much as we can
 			del(lighting_controller)
 		lighting_controller = src
-*/
+
 
 //Workhorse of lighting. It cycles through each light to see which ones need their effects updating. It updates their
 //effects and then processes every turf in the queue, moving the turfs to the corresponing lighting sub-area.
