@@ -203,27 +203,27 @@
 	hitop
 		name = "Hitop"
 		icon_state = "hair_hitop"
-		gender = MALE
+//		gender = MALE
 
 	mohawk
 		name = "Mohawk"
 		icon_state = "hair_d"
-		gender = MALE // gross
+//		gender = MALE // gross
 
 	jensen
 		name = "Adam Jensen Hair"
 		icon_state = "hair_jensen"
-		gender = MALE
+//		gender = MALE
 
 	gelled
 		name = "Gelled Back"
 		icon_state = "hair_gelled"
-		gender = FEMALE
+//		gender = FEMALE
 
 	spiky
 		name = "Spiky"
 		icon_state = "hair_spikey"
-		gender = MALE
+//		gender = MALE
 
 	kusangi
 		name = "Kusanagi Hair"
@@ -232,32 +232,32 @@
 	kagami
 		name = "Pigtails"
 		icon_state = "hair_kagami"
-		gender = FEMALE
+//		gender = FEMALE
 
 	himecut
 		name = "Hime Cut"
 		icon_state = "hair_himecut"
-		gender = FEMALE
+//		gender = FEMALE
 
 	braid
 		name = "Floorlength Braid"
 		icon_state = "hair_braid"
-		gender = FEMALE
+//		gender = FEMALE
 
 	odango
 		name = "Odango"
 		icon_state = "hair_odango"
-		gender = FEMALE
+//		gender = FEMALE
 
 	ombre
 		name = "Ombre"
 		icon_state = "hair_ombre"
-		gender = FEMALE
+//		gender = FEMALE
 
 	updo
 		name = "Updo"
 		icon_state = "hair_updo"
-		gender = FEMALE
+//		gender = FEMALE
 
 	skinhead
 		name = "Skinhead"
@@ -266,12 +266,20 @@
 	balding
 		name = "Balding Hair"
 		icon_state = "hair_e"
-		gender = MALE // turnoff!
+//		gender = MALE // turnoff!
 
 	bald
 		name = "Bald"
 		icon_state = null
-		gender = MALE
+//		gender = MALE
+
+	halfshaved
+		name = "Half Shaved"
+		icon_state = "hair_halfshaved"
+
+	longmohawk
+		name = "Long Mohawk"
+		icon_state = "hair_longmohawk"
 
 /////////////////////////////
 // Facial Hair Definitions //

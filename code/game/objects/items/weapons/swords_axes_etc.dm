@@ -82,9 +82,10 @@
 
 /obj/item/weapon/melee/classic_baton/attack(mob/M, mob/living/user)
 	add_fingerprint(user)
-	if((CLUMSY in user.mutations) && prob(50))
+	if((CLUMSY in user.mutations) || prob(10))
 		user << "<span class='warning'>You club yourself over the head!</span>"
 		user.Weaken(3 * force)
+		user.Stun(3 * force)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			H.apply_damage(2 * force, BRUTE, "head")

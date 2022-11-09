@@ -342,3 +342,127 @@ datum/preferences
 		del(preview_icon)
 		del(eyes_s)
 		del(clothes_s)
+
+/mob/verb/save_character()
+	set name = "Save Character"
+	set category = "Preferences"
+	var/savefile/F = new("data/player_saves/[copytext(ckey,1,2)]/[ckey]/[src.real_name].sav")
+	var/list/O=list()
+
+	if(!( usr ))
+		return
+
+	if(src.real_name == "preferences")
+		usr << "Ha ha very funny name but NO."
+		return
+	if(src.real_name == "Unknown")
+		usr << "Try getting yourself a name, dummy."
+		return
+
+	var/confirm = input("Are you sure you wish to save?", "Character save") in list("Yes", "No")
+	if(confirm == "Yes")
+		if(ishuman(src))
+			src:saved_gender=src:gender
+			src:saved_skintone=src:skin_tone
+			src:saved_hairstyle=src:h_style
+			src:saved_facehair=src:f_style
+			src:saved_underwear=src:underwear
+		O+=src
+		F<<O
+
+
+	world.log<<"[src.real_name] saved."
+	usr << "\blue [src.real_name] saved!"
+
+/mob/verb/load_character()
+	set name = "Load Character"
+	set category = "Preferences"
+
+	if(src.real_name == "preferences")
+		usr << "Ha ha very funny name but NO."
+		return
+	if(src.real_name == "Unknown")
+		usr << "Try getting yourself a name, dummy."
+		return
+
+	if(!( usr ))
+		return
+
+	/*
+	for(var/f in flist("data/player_saves/[copytext(ckey,1,2)]/[ckey]/"))
+		if(copytext("[f]", 1,16) != "preferences.sav")
+			O += f
+
+	var/choose = input("Which character do you want to load?", "Character list") in list(O)
+	O=list()
+	choose>>O
+	for(var/mob/m in O)
+		m.loc=src.loc
+		m.lastDblClick=0
+		m.alreadyspawned=1
+		m.regenerate_icons()
+		m.update_icons()
+	world.log<<"[choose] loaded."
+	usr << "\blue [src.real_name] loaded!"
+
+	del(src)
+
+*/
+
+	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[ckey]/[src.real_name].sav"))
+		usr << "\red [src.real_name].sav does not exist! Try saving or renaming first!"
+		world.log<<"[src.real_name] tried to save but failed."
+		return
+
+	var/savefile/F = new("data/player_saves/[copytext(ckey,1,2)]/[ckey]/[src.real_name].sav")
+	var/confirm = input("Are you sure you wish to load?", "Character load") in list("Yes", "No")
+	if(confirm == "Yes")
+		var/list/O=list()
+		F>>O
+		for(var/mob/living/carbon/human/m in O)
+			m.loc=src.loc
+			m.lastDblClick=0
+			m.alreadyspawned=1
+			m.gender=m.saved_gender
+			m.skin_tone=m.saved_skintone
+			m.h_style=m.saved_hairstyle
+			m.f_style=m.saved_facehair
+			m.regenerate_icons()
+			m.update_icons()
+		world.log<<"[src.real_name] loaded."
+		usr << "\blue [src.real_name] loaded!"
+
+		del(src)
+
+/mob/verb/list_characters()
+	set name = "List Saved Characters"
+	set category = "Preferences"
+//	var/list/O=list()
+	for(var/f in flist("data/player_saves/[copytext(ckey,1,2)]/[ckey]/"))
+		if(copytext("[f]", 1,16) != "preferences.sav")
+//			O += file(""data/player_saves/[copytext(ckey,1,2)]/[ckey]/[f]")
+			usr << "\blue Found character: [f]"
+
+/mob/verb/delete_character()
+	set name = "Delete Character"
+	set category = "Preferences"
+
+	if(!( usr ))
+		return
+
+	if(src.real_name == "preferences")
+		usr << "Ha ha very funny name but NO."
+		return
+	if(src.real_name == "Unknown")
+		usr << "Try getting yourself a name, dummy."
+		return
+
+	if(!fexists("data/player_saves/[copytext(ckey,1,2)]/[ckey]/[src.real_name].sav"))
+		usr << "\red [src.real_name].sav does not exist! Try saving or renaming first!"
+	else
+		world.log<<"[src.real_name] tried to save but failed."
+		var/confirm = input("Are you sure you wish to delete?", "Character delete") in list("Yes", "No")
+		if(confirm == "Yes")
+			fdel("data/player_saves/[copytext(ckey,1,2)]/[ckey]/[src.real_name].sav")
+			world.log<<"[src.real_name] deleted."
+			usr << "\blue [src.real_name] deleted!"

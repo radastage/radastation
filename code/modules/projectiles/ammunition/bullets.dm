@@ -94,3 +94,10 @@
 	desc = "A 7.62 bullet casing."
 	caliber = "a762"
 	projectile_type = "/obj/item/projectile/bullet"
+
+/obj/item/ammo_casing/shotgun/improvised
+	name = "nails shell"
+	desc = "Extremely weak hand-made shell."
+	icon_state = "ishell"
+	projectile_type = "/obj/item/projectile/hivebotbullet"
+	m_amt = 500

@@ -34,7 +34,7 @@
 		equip_to_slot_or_del(new /obj/item/clothing/mask/gas/golem/gas(src), slot_wear_mask)
 		equip_to_slot_or_del(new /obj/item/clothing/gloves/golem/gas(src), slot_gloves)
 		equip_to_slot_or_del(new /obj/item/clothing/head/space/golem/gas(src), slot_head)
-		equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/gas(src), slot_back)
+//		equip_to_slot_or_del(new /obj/item/weapon/storage/backpack/gas(src), slot_back)
 
 		update_body()
 		update_hair()

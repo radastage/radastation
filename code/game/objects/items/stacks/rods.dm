@@ -12,7 +12,10 @@ var/global/list/datum/stack_recipe/rods_recipes = list ( \
 	new/datum/stack_recipe("screwdriver", /obj/item/weapon/screwdriver), \
 	new/datum/stack_recipe("cable coil", /obj/item/weapon/cable_coil/random), \
 	new/datum/stack_recipe("makeshift lighter", /obj/item/weapon/lighter/random{name="makeshift lighter"}), \
+	new/datum/stack_recipe("trophy rack", /obj/item/weapon/storage/backpack/cultpack, 4, time = 75), \
+	new/datum/stack_recipe("metal chain", /obj/item/weapon/melee/chainofcommand{name="metal chain"}, 4, time = 75), \
 	new/datum/stack_recipe("pipe", /obj/item/pipe), \
+	new/datum/stack_recipe("nails shell", /obj/item/ammo_casing/shotgun/improvised), \
 	)
 
 /obj/item/stack/rods

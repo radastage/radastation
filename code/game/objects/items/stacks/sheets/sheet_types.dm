@@ -234,6 +234,10 @@ var/global/list/datum/stack_recipe/cloth_recipes = list ( \
 	new/datum/stack_recipe("white jumpsuit", /obj/item/clothing/under/color/white, 2), \
 	new/datum/stack_recipe("white shoes", /obj/item/clothing/shoes/white), \
 	new/datum/stack_recipe("white gloves", /obj/item/clothing/gloves/white), \
+	null, \
+	new/datum/stack_recipe("backpack", /obj/item/weapon/storage/backpack, 3, time = 75), \
+	new/datum/stack_recipe("satchel", /obj/item/weapon/storage/backpack/satchel_norm, 3, time = 75), \
+	null, \
 	new/datum/stack_recipe("sterile mask", /obj/item/clothing/mask/surgical), \
 	new/datum/stack_recipe("damp rag", /obj/item/weapon/reagent_containers/glass/rag), \
 	new/datum/stack_recipe("improvised bandage", /obj/item/stack/medical/bruise_pack/improvised, 2), \
@@ -264,6 +268,10 @@ var/global/list/datum/stack_recipe/cloth_recipes = list ( \
 	new/datum/stack_recipe("tecnicos mask", /obj/item/clothing/mask/luchador/tecnicos), \
 	new/datum/stack_recipe("horse head mask", /obj/item/clothing/mask/horsehead), \
 	new/datum/stack_recipe("pig mask",/obj/item/clothing/mask/pig), \
+	new/datum/stack_recipe("mime mask", /obj/item/clothing/mask/gas/mime), \
+	new/datum/stack_recipe("sexy mime mask", /obj/item/clothing/mask/gas/sexymime), \
+	new/datum/stack_recipe("clown wig and mask", /obj/item/clothing/mask/gas/clown_hat), \
+	new/datum/stack_recipe("sexy-clown wig and mask", /obj/item/clothing/mask/gas/sexyclown), \
 	null, \
 	new/datum/stack_recipe("Lawyer suit", /obj/item/clothing/under/lawyer/female, 3), \
 	new/datum/stack_recipe("executive suit", /obj/item/clothing/under/suit_jacket/really_black, 3), \

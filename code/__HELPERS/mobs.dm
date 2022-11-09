@@ -80,7 +80,8 @@ var/list/skin_tones = list(
 	"arab",
 	"indian",
 	"african1",
-	"african2"
+	"african2",
+	"furry"
 	)
 
 proc/age2agedescription(age)

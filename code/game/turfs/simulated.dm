@@ -20,6 +20,16 @@
 
 	if (istype(A,/mob/living/carbon))
 		var/mob/living/carbon/M = A
+		if (istype(src, /turf/simulated/floor))	//Darkness subsystem (comment it if you find it extremely lame)
+			var/turf/simulated/floor/FLR = src
+			if(FLR.lighting_lumcount < 1.5)
+				if(prob(30))
+					M.eye_blind += 1
+					if(prob(10))
+						M << "\red It is sure is dark here..."
+			else
+				M.eye_blind -= 10
+
 		if(M.lying)	return
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M

@@ -32,6 +32,24 @@
 	icon_state = "tree_[rand(1, 6)]"
 	..()
 
+/obj/structure/flora/tree/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if (istype(W, /obj/item/weapon/hatchet) || istype(W, /obj/item/weapon/twohanded/fireaxe) || istype(W, /obj/item/weapon/circular_saw))
+		new /obj/item/weapon/grown/log( user.loc )
+		new /obj/item/weapon/grown/log( user.loc )
+		new /obj/item/weapon/grown/log( user.loc )
+		new /obj/item/weapon/grown/log( user.loc )
+		new /obj/item/weapon/grown/log( user.loc )
+		if(prob(50))
+			new /obj/item/weapon/grown/log( user.loc )
+		if(prob(50))
+			new /obj/item/weapon/grown/log( user.loc )
+		if(prob(50))
+			new /obj/item/weapon/grown/log( user.loc )
+		if(prob(50))
+			new /obj/item/weapon/grown/log( user.loc )
+		if(prob(50))
+			new /obj/item/weapon/grown/log( user.loc )
+		del(src)
 
 //grass
 /obj/structure/flora/grass

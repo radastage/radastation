@@ -1,5 +1,5 @@
 /obj/item/projectile/hivebotbullet
-	damage = 5
+	damage = 15
 	damage_type = BRUTE
 
 /obj/item/weapon/gun/energy/hivegun

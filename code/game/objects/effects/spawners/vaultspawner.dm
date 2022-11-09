@@ -1241,3 +1241,133 @@ proc/spawn_random_atom(var/object as text, turf/location as turf)
 	spawnthis = pickweight(spawnthing)
 	new spawnthis(src.loc)
 	del(src)
+
+
+/obj/effect/template_grass
+	var/maxX = 96
+	var/maxY = 96
+	var/minX = 16
+	var/minY = 16
+
+/obj/effect/template_grass/New(turf/location as turf,lX = minX,uX = maxX,lY = minY,uY = maxY,var/type = null)
+
+	var/lowBoundX = location.x
+	var/lowBoundY = location.y
+
+	var/hiBoundX = location.x + rand(lX,uX)
+	var/hiBoundY = location.y + rand(lY,uY)
+
+	var/z = location.z
+
+	for(var/i = lowBoundX,i<=hiBoundX,i++)
+		for(var/j = lowBoundY,j<=hiBoundY,j++)
+			new /turf/simulated/floor/grass(locate(i,j,z))
+			if(prob(20))
+				new /obj/effect/grasses(locate(i,j,z))
+			else if(prob(1))
+				spawn_random_atom("/obj/item/seeds/", locate(i,j,z))
+
+	del(src)
+
+/obj/effect/grasses
+	var/spawnthis = null
+	var/list/spawnthing = list( /obj/structure/flora/ausbushes/fullgrass		 	= 2,
+								/obj/structure/flora/ausbushes/sparsegrass			= 3,
+								/obj/structure/flora/ausbushes/ppflowers			= 1,
+								/obj/structure/flora/ausbushes/brflowers			= 1,
+								/obj/structure/flora/ausbushes/ywflowers			= 1,
+								/obj/structure/flora/ausbushes/lavendergrass		= 1,
+								/obj/structure/flora/ausbushes/pointybush			= 1,
+								/obj/structure/flora/ausbushes/genericbush			= 3,
+								/obj/structure/flora/ausbushes/sunnybush			= 1,
+								/obj/structure/flora/ausbushes/fernybush			= 1,
+								/obj/structure/flora/ausbushes/stalkybush			= 1,
+								/obj/structure/flora/ausbushes/palebush				= 1,
+								/obj/structure/flora/ausbushes/leafybush			= 1,
+								/obj/structure/flora/ausbushes/reedbush				= 1,
+								/obj/structure/flora/ausbushes/fernybush			= 1,
+								/obj/structure/flora/ausbushes/fernybush			= 1,
+								/obj/machinery/hydroponics/soil						= 1,
+								/obj/structure/sink/puddle							= 1,
+								/obj/structure/flora/ausbushes/grassybush			= 1
+								)
+
+/obj/effect/grasses/New()
+	spawnthis = pickweight(spawnthing)
+	new spawnthis(src.loc)
+	del(src)
+
+/obj/effect/template_sand
+	var/maxX = 96
+	var/maxY = 96
+	var/minX = 16
+	var/minY = 16
+
+/obj/effect/template_sand/New(turf/location as turf,lX = minX,uX = maxX,lY = minY,uY = maxY,var/type = null)
+
+	var/lowBoundX = location.x
+	var/lowBoundY = location.y
+
+	var/hiBoundX = location.x + rand(lX,uX)
+	var/hiBoundY = location.y + rand(lY,uY)
+
+	var/z = location.z
+
+	for(var/i = lowBoundX,i<=hiBoundX,i++)
+		for(var/j = lowBoundY,j<=hiBoundY,j++)
+			new /turf/simulated/floor/plating/ironsand(locate(i,j,z))
+			if(prob(20))
+				new /obj/effect/sands(locate(i,j,z))
+
+	del(src)
+
+/obj/effect/sands
+	var/spawnthis = null
+	var/list/spawnthing = list( /obj/item/weapon/ore/glass						 	= 3,
+								/obj/effect/overlay/palmtree_l						= 1,
+								/obj/effect/overlay/coconut							= 1,
+								/obj/effect/overlay/palmtree_r						= 1
+								)
+
+/obj/effect/sands/New()
+	spawnthis = pickweight(spawnthing)
+	new spawnthis(src.loc)
+	del(src)
+
+/obj/effect/template_snow
+	var/maxX = 96
+	var/maxY = 96
+	var/minX = 16
+	var/minY = 16
+
+/obj/effect/template_snow/New(turf/location as turf,lX = minX,uX = maxX,lY = minY,uY = maxY,var/type = null)
+
+	var/lowBoundX = location.x
+	var/lowBoundY = location.y
+
+	var/hiBoundX = location.x + rand(lX,uX)
+	var/hiBoundY = location.y + rand(lY,uY)
+
+	var/z = location.z
+
+	for(var/i = lowBoundX,i<=hiBoundX,i++)
+		for(var/j = lowBoundY,j<=hiBoundY,j++)
+			new /turf/simulated/floor/plating/snow/{temperature=241}(locate(i,j,z))
+			if(prob(20))
+				new /obj/effect/snows(locate(i,j,z))
+
+	del(src)
+
+/obj/effect/snows
+	var/spawnthis = null
+	var/list/spawnthing = list( /obj/structure/flora/grass/both						 	= 1,
+								/obj/structure/flora/grass/green						= 1,
+								/obj/structure/flora/tree/pine							= 1,
+								/obj/structure/flora/tree/dead							= 1,
+								/obj/structure/flora/grass/brown						= 1
+								)
+
+/obj/effect/snows/New()
+	spawnthis = pickweight(spawnthing)
+	new spawnthis(src.loc)
+	del(src)

@@ -60,7 +60,7 @@
 				t_his = "her"
 				t_him = "her"
 		if(!dna.mutantrace)
-			msg += "<EM>[src.name], [age2agedescription(age)] human</EM>!\n"
+			msg += "<EM>[src.name], [age2agedescription(age)] [reject_bad_name(src.skin_tone, 0, 24)] [src.gender]</EM>!\n"
 		else if(dna.mutantrace == "gas")
 			msg += "<EM>[src.name], [age2agedescription(age)] giant armored serpentid</EM>!\n"
 		else

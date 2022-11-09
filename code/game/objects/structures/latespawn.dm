@@ -16,3 +16,6 @@
 
 /obj/structure/latespawn/Move()
 	latejoin -= prevloc
+
+/obj/structure/latespawn/Del()
+	latejoin -= prevloc

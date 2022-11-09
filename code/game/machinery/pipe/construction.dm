@@ -232,6 +232,20 @@ Buildable meters
 /obj/item/pipe/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
 	..()
 	//*
+	if (istype(W, /obj/item/device/assembly/igniter))
+		var/obj/item/device/assembly/igniter/IG = W
+		if(IG.secured == 1)
+			user << "\red [IG] is secured!"
+			return ..()
+		else
+			user.drop_from_inventory(W)
+			new /obj/item/weapon/gun/projectile/shotgun/pump/pipegun(user.loc)
+			playsound(user.loc, 'sound/items/Screwdriver.ogg', 50, 1, -3)
+			user << "\blue You assemble a pipe gun."
+			del(W)
+			del(src)
+			return 1
+
 	if (!istype(W, /obj/item/weapon/wrench))
 		return ..()
 	if (!isturf(src.loc))

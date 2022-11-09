@@ -32,3 +32,23 @@
 	name = "Coconuts"
 	icon = 'icons/misc/beach.dmi'
 	icon_state = "coconuts"
+
+/obj/effect/overlay/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if (istype(src, /obj/effect/overlay/palmtree_l) || istype(src, /obj/effect/overlay/palmtree_r))
+		if (istype(W, /obj/item/weapon/hatchet) || istype(W, /obj/item/weapon/twohanded/fireaxe) || istype(W, /obj/item/weapon/circular_saw))
+			new /obj/item/weapon/grown/log( user.loc )
+			new /obj/item/weapon/grown/log( user.loc )
+			new /obj/item/weapon/grown/log( user.loc )
+			new /obj/item/weapon/grown/log( user.loc )
+			new /obj/item/weapon/grown/log( user.loc )
+			if(prob(50))
+				new /obj/item/weapon/grown/log( user.loc )
+			if(prob(50))
+				new /obj/item/weapon/grown/log( user.loc )
+			if(prob(50))
+				new /obj/item/weapon/grown/log( user.loc )
+			if(prob(50))
+				new /obj/item/weapon/grown/log( user.loc )
+			if(prob(50))
+				new /obj/item/weapon/grown/log( user.loc )
+			del(src)
