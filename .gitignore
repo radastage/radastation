@@ -4,6 +4,7 @@
 *.bdb
 *.log
 *.sav
+data\investigate
 
 #Compiled files and other files generated during compilation.
 *.dmb

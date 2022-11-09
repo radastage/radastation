@@ -88,6 +88,7 @@
 	name = get_visible_name()
 
 	handle_regular_hud_updates()
+	handle_psychosis() //experimental
 
 	// Grabbing
 	for(var/obj/item/weapon/grab/G in src)
@@ -782,6 +783,10 @@
 					heal_overall_damage(0.5,0.5)
 					adjustToxLoss(-0.5)
 					adjustOxyLoss(-0.5)
+					if(hallucination > 5)
+						hallucination -= 5
+					if(confused > 5)
+						confused -= 5
 					updatehealth()
 			if (buckled)
 				if (prob(15))
@@ -789,6 +794,10 @@
 						heal_overall_damage(1,1)
 						adjustToxLoss(-0.5)
 						adjustOxyLoss(-5.5)
+						if(hallucination > 25)
+							hallucination -= 25
+						if(confused > 25)
+							confused -= 25
 						updatehealth()
 //			if (nutrition < 5)
 //				adjustToxLoss(1)
@@ -1240,6 +1249,20 @@
 	proc/handle_changeling()
 		if(mind && mind.changeling)
 			mind.changeling.regenerate()
+
+	proc/handle_psychosis()
+		if(stat != 2)
+			var/list/traumas = attack_log
+			if(prob(10) && traumas.len)
+				for(var/episode in attack_log)
+					hallucination += 20
+					confused += 20
+					attack_log -= episode
+					if(prob(40))
+						Paralyse(1)
+						make_jittery(500)
+				src << "\red You're totally losing it! Get a grip!"
+				emote("cry")
 
 #undef HUMAN_MAX_OXYLOSS
 #undef HUMAN_CRIT_MAX_OXYLOSS
