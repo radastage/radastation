@@ -341,6 +341,8 @@
 				G.gender = MALE
 				G.regenerate_icons()
 				G.real_name = "[capitalize(pick(adjectives))] [pick(ogre_names)]"
+			if ("wizard")
+				G.mind.make_Wizard()
 
 
 	if(prob(delchance))
@@ -645,3 +647,82 @@ proc/announce_to_ghosts()
 	delchance = 24
 	desc = "a strange rune used to create space ogres. It glows when spirits are nearby."
 	spawninfo = "ogre"
+
+/obj/effect/mobspawn/test_subject
+	name = "test subject rune"
+	delchance = 5
+	desc = "a strange rune used to create test subjects. It glows when spirits are nearby."
+	spawnuniform = /obj/item/clothing/under/rank/medical/purple
+	customjob = "Test Subject"
+	spawnmask = /obj/item/clothing/mask/surgical
+	spawnhelmet = /obj/item/clothing/head/helmet/space/rig/medical{name = "face cover"}
+	spawnsuit = /obj/item/clothing/suit/straight_jacket
+	spawnshoes = /obj/item/clothing/shoes/white
+	spawnback = /obj/item/weapon/storage/backpack/satchel_med
+	spawnradio = /obj/item/device/radio/headset/headset_med
+	spawnglasses = /obj/item/clothing/glasses/sunglasses/blindfold
+
+/obj/effect/mobspawn/prisoner
+	name = "prisoner rune"
+	delchance = 5
+	desc = "a strange rune used to create convicts. It glows when spirits are nearby."
+	spawnshoes = /obj/item/clothing/shoes/orange
+	spawnuniform = /obj/item/clothing/under/color/orange
+
+/obj/effect/mobspawn/wizard
+	name = "wizard rune"
+	delchance = 78
+	desc = "We've gone full circle."
+	spawninfo = "wizard"
+	spawnshoes = /obj/item/clothing/shoes/sandal
+	spawnsuit = /obj/item/clothing/suit/wizrobe
+	spawnhelmet = /obj/item/clothing/head/wizard
+	spawnuniform = /obj/item/clothing/under/purple
+
+/obj/effect/mobspawn/nurse
+	name = "nurse rune"
+	delchance = 33
+	customjob = "Nurse"
+	spawnradio = /obj/item/device/radio/headset/headset_med
+	spawnback = /obj/item/weapon/storage/backpack/satchel_med
+	spawnbelt = /obj/item/weapon/storage/belt/medical
+	spawngloves = /obj/item/clothing/gloves/latex
+	spawnmask = /obj/item/clothing/mask/surgical
+	spawnpocket1 = /obj/item/device/flashlight/pen
+	spawnshoes = /obj/item/clothing/shoes/white
+	spawnsuit = /obj/item/clothing/suit/apron/surgical
+	spawnuniform = /obj/item/clothing/under/rank/nursesuit
+	spawnhelmet = /obj/item/clothing/head/nursehat
+
+/obj/effect/mobspawn/tourist
+	name = "tourist rune"
+	delchance = 20
+	customjob = "Tourist"
+	spawnback = /obj/item/weapon/storage/backpack/satchel
+	spawnbelt = /obj/item/device/camera
+	spawnglasses = /obj/item/clothing/glasses/sunglasses
+	spawnpocket1 = /obj/item/weapon/storage/wallet/random
+	spawnradio = /obj/item/device/radio/headset
+	spawnshoes = /obj/item/clothing/shoes/tourist
+	spawnuniform = /obj/item/clothing/under/tourist
+
+/obj/effect/mobspawn/mailman
+	name = "mailman rune"
+	delchance = 40
+	customjob = "Postman"
+	spawnback = /obj/item/weapon/storage/backpack/santabag{name = "cargo bag"}
+	spawnradio = /obj/item/device/radio/headset/headset_srv
+	spawnshoes = /obj/item/clothing/shoes/brown
+	spawnhelmet = /obj/item/clothing/head/mailman
+	spawnuniform = /obj/item/clothing/under/rank/mailman
+
+/obj/effect/mobspawn/waiter
+	name = "waiter rune"
+	delchance = 20
+	customjob = "Waiter"
+	spawnshoes = /obj/item/clothing/shoes/laceup
+	spawnuniform = /obj/item/clothing/under/waiter
+	spawnradio = /obj/item/device/radio/headset/headset_srv
+	spawnpocket1 = /obj/item/weapon/barcodescanner
+
+

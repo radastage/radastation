@@ -207,7 +207,7 @@
  */
 /datum/stack_recipe
 	var/title = "ERROR"
-	var/result_type
+	var/result_type = /obj/item
 	var/req_amount = 1
 	var/res_amount = 1
 	var/max_res_amount = 1

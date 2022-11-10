@@ -15,7 +15,7 @@ var/global/list/datum/stack_recipe/rods_recipes = list ( \
 	new/datum/stack_recipe("trophy rack", /obj/item/weapon/storage/backpack/cultpack, 4, time = 75), \
 	new/datum/stack_recipe("metal chain", /obj/item/weapon/melee/chainofcommand{name="metal chain"}, 4, time = 75), \
 	new/datum/stack_recipe("pipe", /obj/item/pipe), \
-	new/datum/stack_recipe("nails shell", /obj/item/ammo_casing/shotgun/improvised), \
+	new/datum/stack_recipe("nails shell", /obj/item/ammo_casing/shotgun/improvised, time = 75), \
 	)
 
 /obj/item/stack/rods

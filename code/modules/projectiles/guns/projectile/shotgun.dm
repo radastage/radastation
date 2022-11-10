@@ -146,6 +146,7 @@
 	max_shells = 0
 	origin_tech = "combat=2;materials=2"
 	fire_sound = 'sound/weapons/pipegun.ogg'
+	recoil = 10
 
 /obj/item/weapon/gun/projectile/shotgun/pump/pipegun/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(istype(A, /obj/item/ammo_casing) && !load_method)
@@ -155,40 +156,103 @@
 			AC.loc = src
 			loaded += AC
 			user << "<span class='notice'>You load a shell into \the [src]!</span>"
+			return
+
 	A.update_icon()
 	update_icon()
-	if(istype(A, /obj/item/weapon/wirecutters) || istype(A, /obj/item/weapon/pickaxe/plasmacutter))
+	if(istype(A, /obj/item/weapon/wirecutters)  && max_shells == 0)
 		user << "<span class='notice'>You begin to shorten the barrel of \the [src].</span>"
 		playsound(user.loc, 'sound/items/Wirecutter.ogg', 100, 1)
 		if(do_after(user, 30))
 			max_shells = 1
-			user << "<span class='notice'>You begin to shorten the barrel of \the [src].</span>"
+			user << "<span class='notice'>You shorten the barrel of \the [src]!</span>"
 			desc = "An assembly made from cut pipe and an igniter attached to it. It is a single-shot firearm that uses the igniter as a firing mechanism. It is also potentially dangerous to use."
 			icon_state = "pipegun1"
 			update_icon()
+			return
+
+	if(istype(A, /obj/item/weapon/wirecutters) && max_shells == 1)
+		user << "<span class='notice'>You begin to craft an improvised stock for \the [src].</span>"
+		playsound(user.loc, 'sound/items/Ratchet.ogg', 100, 1)
+		if(do_after(user, 30))
+			user.drop_item()
+			del(A)
+			max_shells = 2
+			recoil = 5
+			user << "<span class='notice'>You craft an improvised stock for \the [src]!.</span>"
+			desc = "An assembly made from cut pipe and an igniter attached to it. It is a firearm that uses the igniter as a firing mechanism and has a stock made out from a pair of wirecutters. Its 'chamber' can hold two shells. Still, it is potentially dangerous to use."
+			icon_state = "pipegun2"
+			update_icon()
+			return
+
+	if(istype(A, /obj/item/weapon/cable_coil) && max_shells == 2)
+		var/obj/item/weapon/cable_coil/CC = A
+		if(CC.amount < 5)
+			user << "\b There is not enough wire in this coil. You need 5 lengths."
+			return
+
+		user << "<span class='notice'>You begin to stabilize \the [src] using [A].</span>"
+		playsound(user.loc, 'sound/items/Welder2.ogg', 100, 1)
+		if(do_after(user, 50))
+			CC.use(5)
+			max_shells = 3
+			recoil = 2
+			user << "<span class='notice'>You stabilize \the [src] using [A]!.</span>"
+			desc = "It is *truly* a firearm that uses the igniter as a firing mechanism and has a stock made out from a pair of wirecutters. It has cable coil wrapped around the base and igniting element to reduce recoil. Its 'chamber' can hold three shells. It is dangerous to use... for everyone, except the wielder."
+			icon_state = "pipegun3"
+			update_icon()
+			return
 
 /obj/item/weapon/gun/projectile/shotgun/pump/pipegun/afterattack(atom/target as mob|obj|turf, mob/living/user as mob|obj, flag, params)
 	..()
+	for(var/shots in contents)
+		..()
+		attack_self(user)
 	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
-	if(prob(20))
-		user.Stun(5)
-		user.Weaken(5)
-		user.apply_effect(STUTTER, 5)
-		user.visible_message("<span class='danger'>[user]'s [src.name] has misfired!</span>")
-		playsound(user.loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
-	else if(prob(10))
-		user.Stun(10)
-		user.Weaken(10)
-		user.apply_effect(STUTTER, 10)
-		playsound(user.loc, 'sound/effects/clang.ogg', 100, 1, -1)
-		user.apply_damage(10, BRUTE, "l_arm")
-		user.apply_damage(10, BRUTE, "r_arm")
-		user.visible_message("<span class='danger'>[user]'s [src.name] has exploded violently!</span>")
-		user.ear_damage += 30
-		user.ear_deaf += 120
-		if(prob(30))
-			user.visible_message("<span class='danger'>[src] is destroyed!</span>")
-			user.drop_item()
-			del(src)
+	switch(max_shells)
+		if(1)
+			if(prob(20))
+				user.Stun(5)
+				user.Weaken(5)
+				user.apply_effect(STUTTER, 5)
+				user.visible_message("<span class='danger'>[user]'s [src.name] has misfired!</span>")
+				playsound(user.loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
+			else if(prob(10))
+				user.Stun(10)
+				user.Weaken(10)
+				user.apply_effect(STUTTER, 10)
+				playsound(user.loc, 'sound/effects/clang.ogg', 100, 1, -1)
+				user.apply_damage(10, BRUTE, "l_arm")
+				user.apply_damage(10, BRUTE, "r_arm")
+				user.visible_message("<span class='danger'>[user]'s [src.name] has exploded violently!</span>")
+				user.ear_damage += 30
+				user.ear_deaf += 120
+				if(prob(30))
+					user.visible_message("<span class='danger'>[src] is destroyed!</span>")
+					user.drop_item()
+					del(src)
+		if(2)
+			if(prob(5))
+				user.Stun(5)
+				user.Weaken(5)
+				user.apply_effect(STUTTER, 5)
+				user.visible_message("<span class='danger'>[user]'s [src.name] has misfired!</span>")
+				playsound(user.loc, 'sound/weapons/Egloves.ogg', 50, 1, -1)
+			else if(prob(1))
+				user.Stun(10)
+				user.Weaken(10)
+				user.apply_effect(STUTTER, 10)
+				playsound(user.loc, 'sound/effects/clang.ogg', 100, 1, -1)
+				user.apply_damage(10, BRUTE, "l_arm")
+				user.apply_damage(10, BRUTE, "r_arm")
+				user.visible_message("<span class='danger'>[user]'s [src.name] has exploded violently!</span>")
+				user.ear_damage += 30
+				user.ear_deaf += 120
+				if(prob(10))
+					user.visible_message("<span class='danger'>[src] is destroyed!</span>")
+					user.drop_item()
+					del(src)
+		else
+			return

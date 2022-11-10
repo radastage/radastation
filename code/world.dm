@@ -408,3 +408,9 @@ proc/establish_db_connection()
 		world<<"[n] loaded."
 	world<<"Map loaded."
 	world.log<<"Map loaded."
+
+/datum/stack_recipe/Write()
+	return
+
+/datum/stack_recipe/Read()
+	return
