@@ -23,7 +23,7 @@
 		if (istype(src, /turf/simulated/floor))	//Darkness subsystem (comment it if you find it extremely lame)
 			var/turf/simulated/floor/FLR = src
 			if(FLR.lighting_lumcount < 1)
-				if(prob(30))
+				if(prob(70/M.see_in_dark))
 					M.eye_blind = 3
 					if(prob(10))
 						M << "\red It is sure is dark here..."

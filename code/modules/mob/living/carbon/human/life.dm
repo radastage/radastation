@@ -1042,7 +1042,7 @@
 						see_invisible = SEE_INVISIBLE_OBSERVER
 						sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
 					else
-						see_in_dark = 100
+						see_in_dark = 4
 
 			if(XRAY in mutations)
 				sight |= SEE_TURFS|SEE_MOBS|SEE_OBJS
@@ -1255,14 +1255,15 @@
 			var/list/traumas = attack_log
 			if(prob(10) && traumas.len)
 				for(var/episode in attack_log)
-					hallucination += 20
-					confused += 20
 					attack_log -= episode
-					if(prob(40))
+					if(prob(8))
+						hallucination += 50
+						confused += 50
+						src << "\red You're totally losing it! Get a grip!"
+						emote("cry")
+					if(prob(4))
 						Paralyse(1)
-						make_jittery(500)
-				src << "\red You're totally losing it! Get a grip!"
-				emote("cry")
+						make_jittery(50)
 
 #undef HUMAN_MAX_OXYLOSS
 #undef HUMAN_CRIT_MAX_OXYLOSS

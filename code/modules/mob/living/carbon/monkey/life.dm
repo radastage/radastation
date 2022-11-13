@@ -48,7 +48,7 @@
 	//code. Very ugly. I dont care. Moving this stuff here so its easy
 	//to find it.
 	blinded = null
-	see_in_dark = 100
+	see_in_dark = 8
 
 	//Handle temperature/pressure differences between body and environment
 	if(environment)	// More error checking -- TLE

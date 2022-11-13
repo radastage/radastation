@@ -514,3 +514,45 @@
 				src.attackby(R.module_state_3,R)
 			else
 				return
+
+/turf/simulated/floor/plating/ironsand/attackby(obj/item/weapon/W as obj, mob/user as mob)
+
+	if(!W || !user)
+		return 0
+
+	if ((istype(W, /obj/item/weapon/shovel)))
+		var/turf/T = user.loc
+		if (!( istype(T, /turf) ))
+			return
+
+		user << "\red You start digging."
+		playsound(src, 'sound/effects/rustle1.ogg', 50, 1) //russle sounds sounded better
+
+		sleep(40)
+		if ((user.loc == T && user.get_active_hand() == W))
+			user << "\blue You dug a hole."
+			if(prob(90))
+				user << "\blue You found nothing useful."
+				return
+			else
+				user << "\blue You dug some sand out."
+				new/obj/item/weapon/ore/glass(src)
+				if(prob(15))
+					spawn_random_atom("/obj/item/weapon/ore", locate(src.x, src.y, src.z))
+					user << "\green You dug something useful out!"
+					return
+				else
+					return
+
+
+
+	if(istype(W,/obj/item/weapon/storage/bag/ore))
+		var/obj/item/weapon/storage/bag/ore/S = W
+		if(S.collection_mode)
+			for(var/obj/item/weapon/ore/O in src.contents)
+				O.attackby(W,user)
+				return
+
+	else
+		..(W,user)
+	return

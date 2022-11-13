@@ -1485,7 +1485,8 @@ ________________________________________________________________________________
 //=======//INITIALIZE//=======//
 
 /obj/item/clothing/suit/space/space_ninja/proc/ninitialize(delay = s_delay, mob/living/carbon/human/U = loc)
-	if(U.mind && U.mind.assigned_role=="MODE" && !s_initialized && !s_busy)//Shouldn't be busy... but anything is possible I guess.
+//	if(U.mind && U.mind.assigned_role=="MODE" && !s_initialized && !s_busy)//Shouldn't be busy... but anything is possible I guess.
+	if(!s_initialized && !s_busy)
 		s_busy = 1
 		for(var/i,i<7,i++)
 			switch(i)
@@ -1517,9 +1518,9 @@ ________________________________________________________________________________
 			sleep(delay)
 		s_busy = 0
 	else
-		if(!U.mind||U.mind.assigned_role!="MODE")//Your run of the mill persons shouldn't know what it is. Or how to turn it on.
-			U << "You do not understand how this suit functions. Where the heck did it even come from?"
-		else if(s_initialized)
+//		if(!U.mind||U.mind.assigned_role!="MODE")//Your run of the mill persons shouldn't know what it is. Or how to turn it on.
+//			U << "You do not understand how this suit functions. Where the heck did it even come from?"
+		if(s_initialized)
 			U << "\red The suit is already functioning. \black <b>Please report this bug.</b>"
 		else
 			U << "\red <B>ERROR</B>: \black You cannot use this function at this time."

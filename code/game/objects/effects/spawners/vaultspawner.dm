@@ -661,6 +661,9 @@ proc/spawn_random_atom(var/object as text, turf/location as turf)
 	if(!newatom.icon || newatom.icon == null || newatom.icon_state == null)
 		del(newatom)
 
+	if(newatom)
+		return newatom
+
 
 /obj/effect/stationloot/New()
 	spawnthis = pickweight(spawnthing)
@@ -1370,4 +1373,22 @@ proc/spawn_random_atom(var/object as text, turf/location as turf)
 /obj/effect/snows/New()
 	spawnthis = pickweight(spawnthing)
 	new spawnthis(src.loc)
+	del(src)
+
+/obj/effect/workplace_xenobiology/New(turf/location as turf)
+	new /obj/machinery/smartfridge/extract(locate(location.x,location.y,location.z))
+	new /obj/item/weapon/circular_saw(locate(location.x,location.y,location.z))
+	new /obj/item/weapon/scalpel(locate(location.x,location.y,location.z))
+	new /obj/item/weapon/hemostat(locate(location.x,location.y,location.z))
+	new /obj/structure/optable(locate((location.x+1),location.y,location.z))
+	new /obj/item/weapon/surgical_drapes(locate((location.x+1),location.y,location.z))
+	new /obj/item/weapon/tank/anesthetic(locate((location.x+1),location.y,location.z))
+	new /obj/item/clothing/mask/breath(locate((location.x+1),location.y,location.z))
+	new /obj/machinery/reagentgrinder(locate((location.x-1),location.y,location.z))
+	new /obj/item/slime_extract/grey(locate((location.x-1),location.y,location.z))
+	new /obj/item/weapon/storage/box/syringes(locate((location.x-1),location.y,location.z))
+	new /obj/item/weapon/extinguisher(locate(location.x,location.y,location.z))
+	new /obj/item/stack/sheet/mineral/plasma{amount=5}(locate((location.x-1),location.y,location.z))
+	new /obj/item/weapon/storage/box/monkeycubes(locate(location.x,location.y,location.z))
+
 	del(src)
