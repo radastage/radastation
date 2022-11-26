@@ -81,6 +81,7 @@ var/list/skin_tones = list(
 	"indian",
 	"african1",
 	"african2",
+	"synth",
 	"furry"
 	)
 

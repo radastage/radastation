@@ -1,4 +1,4 @@
-/mob/living/carbon/alien/humanoid/emote(var/act)
+/mob/living/carbon/alien/humanoid/emote(var/act,var/m_type=1,var/message = null)
 
 	var/param = null
 	if (findtext(act, "-", 1, null))
@@ -6,11 +6,10 @@
 		param = copytext(act, t1 + 1, length(act) + 1)
 		act = copytext(act, 1, t1)
 
-	if(findtext(act,"s",-1) && !findtext(act,"_",-2))//Removes ending s's unless they are prefixed with a '_'
-		act = copytext(act,1,length(act))
+//	if(findtext(act,"s",-1) && !findtext(act,"_",-2))//Removes ending s's unless they are prefixed with a '_'
+//		act = copytext(act,1,length(act))
 	var/muzzled = istype(src.wear_mask, /obj/item/clothing/mask/muzzle)
-	var/m_type = 1
-	var/message
+	m_type = 1
 
 	switch(act)
 		if("sign")
@@ -101,8 +100,12 @@
 			m_type = 2
 		if("help")
 			src << "burp, deathgasp, choke, collapse, dance, drool, gasp, shiver, gnarl, jump, moan, nod, roar, roll, scratch,\nscretch, shake, sign-#, sit, sulk, sway, tail, twitch, whimper"
+		if("me")
+			if(message)
+				message = "<B>[src]</B> [message]"
 		else
-			src << text("Invalid Emote: []", act)
+			message = "<B>[src]</B> [act]"
+			//src << text("Invalid Emote: []", act)
 	if ((message && src.stat == 0))
 		log_emote("[name]/[key] : [message]")
 		if (act == "roar")

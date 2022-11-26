@@ -104,12 +104,10 @@ Please contact me on #coderbus IRC. ~Carnie x
 			pixel_x = -7
 			if(age<21)
 				base_icon_state = "ogre1"
-			if(age>=21 && age < 31)
+			if(age>=21 && age < 41)
 				base_icon_state = "ogre2"
-			if(age>=31 && age < 41)
-				base_icon_state = "ogre3"
 			if(age>=41)
-				base_icon_state = "ogre4"
+				base_icon_state = "ogre3"
 
 			var/icon/ogreskin = icon('icons/mob/ogre.dmi', base_icon_state)
 			//ogreskin.Blend("#[h_color]", ICON_ADD)

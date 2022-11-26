@@ -98,7 +98,8 @@ datum/mind
 			for(var/datum/objective/objective in objectives)
 				output += "<br><B>Objective #[obj_count++]</B>: [objective.explanation_text]"
 
-		if(window)	recipient << browse(output,"window=memory")
+//		if(window)	recipient << browse(output,"window=memory")
+		if(window)  recipient << browse({"<HTML><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><HEAD><TITLE>"Memory"</TITLE></HEAD><BODY>[output]<HR></BODY></HTML>"}, "window=Memory")
 		else		recipient << "<i>[output]</i>"
 
 	proc/edit_memory()

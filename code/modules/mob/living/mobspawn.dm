@@ -25,7 +25,10 @@
 	var/customjob
 	var/spawnidicon
 	var/spawnidaccess = list()
-	var/spawntext
+	var/spawntext //used to define race
+	var/spawnmessage
+	var/spawnrace //actual human races
+	var/suitstorage
 //	var/spawnmob = /mob/living/carbon/human
 
 /obj/effect/mobspawn/DblClick()
@@ -40,7 +43,7 @@
 //	if(!usr.stat) return //make it for ghosts
 
 	var/def_value
-	var/mod_slot = input("Select slot:", "Slot", def_value) as null|anything in list("under", "suit", "shoes", "gloves", "radio", "glasses", "mask", "head", "belt", "pocket1", "pocket2", "back", "custom job", "spawn id icon", "spawn id access", "rune name", "delete chance", "race")
+	var/mod_slot = input("Select slot:", "Slot", def_value) as null|anything in list("under", "suit", "shoes", "gloves", "radio", "glasses", "mask", "head", "belt", "pocket1", "pocket2", "suit storage", "back", "custom job", "spawn id icon", "spawn id access", "rune name", "delete chance", "race", "skintone", "message")
 	if (!mod_slot) return
 
 	if(mod_slot == "custom job")
@@ -65,6 +68,14 @@
 
 	if(mod_slot == "race")
 		src.spawntext = copytext(sanitize(input(usr, "Enter new mutant race", "Race", "human") as null|text),1,20)
+		return
+
+	if(mod_slot == "skintone")
+		src.spawnrace = copytext(sanitize(input(usr, "Enter new skintone", "Race", "caucasian1") as null|text),1,20)
+		return
+
+	if(mod_slot == "message")
+		src.spawnmessage = copytext(sanitize(input(usr, "Enter new visible message", "Message", "You are the [rank].") as null|text),1,999)
 		return
 
 	var/slot_type = copytext(sanitize(input(usr, "What is that slot type?", "Slot item", "/obj/item/clothing/[mod_slot]") as null|text),1,999)
@@ -113,6 +124,8 @@
 			spawnpocket2 = slot_type
 		if("back")
 			spawnback = slot_type
+		if("suit storage")
+			suitstorage = slot_type
 
 /obj/effect/mobspawn/New()
 	..()
@@ -153,6 +166,8 @@
 			G.equip_to_slot_or_del(new spawnpocket1(G), slot_r_store)
 		if(spawnpocket2)
 			G.equip_to_slot_or_del(new spawnpocket2(G), slot_l_store)
+		if(suitstorage)
+			G.equip_to_slot_or_del(new suitstorage(G), slot_s_store)
 		if(spawnback)
 			G.equip_to_slot_or_del(new spawnback(G), slot_back)
 		if (customjob)
@@ -173,6 +188,11 @@
 					C.access = spawnidaccess
 		if (spawntext)
 			G.dna.mutantrace = spawntext
+		if (spawnmessage)
+			G << spawnmessage
+			G.mind.memory += spawnmessage
+		if (spawnrace)
+			G.skin_tone = spawnrace
 
 		switch (spawninfo)
 			if ("golem")
@@ -301,6 +321,7 @@
 			if ("ninja")
 				G.real_name = "[pick(ninja_titles)] [pick(ninja_names)]"
 				G.equip_space_ninja()
+				G.mind.special_role = "Space Ninja"
 			if ("changeling")
 				G.make_changeling()
 			if ("deathsquad")
@@ -342,8 +363,36 @@
 				G.regenerate_icons()
 				G.real_name = "[capitalize(pick(adjectives))] [pick(ogre_names)]"
 			if ("wizard")
-				G.mind.make_Wizard()
-
+				ticker.mode.equip_wizard(G)
+			if ("revolutionary")
+				ticker.mode.revolutionaries += G
+				ticker.mode.revolutionaries += G.mind
+				ticker.mode.update_rev_icons_added(G)
+				ticker.mode.update_rev_icons_added(G.mind)
+				G.mind.special_role = "Revolutionary"
+				G << "\red <FONT size = 3> You are now a revolutionary! Help your cause. Do not harm your fellow freedom fighters. You can identify your comrades by the red \"R\" icons, and your leaders by the blue \"R\" icons. Help them kill the heads to win the revolution!</FONT>"
+			if ("headrev")
+				G << "\red <FONT size = 3><B>You have proved your devotion to revoltion! You are a head revolutionary now!</B></FONT>"
+				if (ticker.mode.head_revolutionaries.len>0)
+					// copy targets
+					var/datum/mind/valid_head = locate() in ticker.mode.head_revolutionaries
+					if (valid_head)
+						for (var/datum/objective/mutiny/O in valid_head.objectives)
+							var/datum/objective/mutiny/rev_obj = new
+							rev_obj.owner = src
+							rev_obj.target = O.target
+							rev_obj.explanation_text = "Assassinate [O.target.name], the [O.target.assigned_role]."
+							G.mind.objectives += rev_obj
+						ticker.mode.greet_revolutionary(G,0)
+				ticker.mode.head_revolutionaries += G
+				ticker.mode.head_revolutionaries += G.mind
+				ticker.mode.update_rev_icons_added(G)
+				ticker.mode.update_rev_icons_added(G.mind)
+				G.mind.special_role = "Head Revolutionary"
+			if ("loyal")
+				var/obj/item/weapon/implant/loyalty/IL = new/obj/item/weapon/implant/loyalty(G)
+				IL.imp_in = G
+				IL.implanted = 1
 
 	if(prob(delchance))
 		del(src)
@@ -658,7 +707,7 @@ proc/announce_to_ghosts()
 	spawnhelmet = /obj/item/clothing/head/helmet/space/rig/medical{name = "face cover"}
 	spawnsuit = /obj/item/clothing/suit/straight_jacket
 	spawnshoes = /obj/item/clothing/shoes/white
-	spawnback = /obj/item/weapon/storage/backpack/satchel_med
+	spawnback = /obj/item/device/radio/electropack
 	spawnradio = /obj/item/device/radio/headset/headset_med
 	spawnglasses = /obj/item/clothing/glasses/sunglasses/blindfold
 
@@ -668,6 +717,8 @@ proc/announce_to_ghosts()
 	desc = "a strange rune used to create convicts. It glows when spirits are nearby."
 	spawnshoes = /obj/item/clothing/shoes/orange
 	spawnuniform = /obj/item/clothing/under/color/orange
+	customjob = "Prisoner"
+	spawnidicon = "orange"
 
 /obj/effect/mobspawn/wizard
 	name = "wizard rune"
@@ -725,4 +776,94 @@ proc/announce_to_ghosts()
 	spawnradio = /obj/item/device/radio/headset/headset_srv
 	spawnpocket1 = /obj/item/weapon/barcodescanner
 
+/obj/effect/mobspawn/revolutionary
+	name = "revolutionary rune"
+	delchance = 20
+	customjob = "Revolutionary"
+	spawninfo = "revolutionary"
+	spawnuniform = /obj/item/clothing/under/rank/vice
+	spawnshoes = /obj/item/clothing/shoes/brown
+	spawnradio = /obj/item/device/radio/headset
+	spawnpocket1 = /obj/item/weapon/switchblade
+	spawnbelt = /obj/item/device/radio
+	spawnpocket2 = /obj/item/weapon/cable_coil/random
+	spawnhelmet = /obj/item/clothing/head/ushanka
+	spawnback = /obj/item/weapon/storage/backpack
+
+/obj/effect/mobspawn/headrev
+	name = "head revolutionary rune"
+	delchance = 75
+	customjob = "Head Revolutionary"
+	spawninfo = "headrev"
+	spawnuniform = /obj/item/clothing/under/soviet
+	spawnshoes = /obj/item/clothing/shoes/jackboots
+	spawnradio = /obj/item/device/radio/headset/heads
+	spawnbelt = /obj/item/weapon/gun/projectile/pistol
+	spawnpocket1 = /obj/item/weapon/silencer
+	spawnpocket2 = /obj/item/ammo_magazine/mc9mm
+	spawnback = /obj/item/weapon/storage/backpack
+	spawnhelmet = /obj/item/clothing/head/bearpelt
+	spawnmask = /obj/item/clothing/mask/balaclava
+	spawngloves = /obj/item/clothing/gloves/grey
+
+/obj/effect/mobspawn/space_explorer
+	name = "space explorer rune"
+	delchance = 33
+	customjob = "Space Explorer"
+	spawnuniform = /obj/item/clothing/under/color/grey
+	spawnshoes = /obj/item/clothing/shoes/black
+	spawnradio = /obj/item/device/radio/headset
+	spawnpocket1 = /obj/item/weapon/tank/emergency_oxygen/double
+	spawnpocket2 = /obj/item/weapon/tank/emergency_oxygen/double
+	spawnback = /obj/item/weapon/tank/jetpack/oxygen
+	spawnbelt = /obj/item/device/radio
+	spawnmask = /obj/item/clothing/mask/breath
+	spawnsuit = /obj/item/clothing/suit/space
+	spawnhelmet = /obj/item/clothing/head/helmet/space
+	spawngloves = /obj/item/clothing/gloves/yellow
+	suitstorage = /obj/item/weapon/tank/oxygen
+
+/obj/effect/mobspawn/space_miner
+	name = "space miner rune"
+	delchance = 50
+	rank = "Shaft Miner"
+	spawnsuit = /obj/item/clothing/suit/space/rig/mining
+	spawnhelmet = /obj/item/clothing/head/helmet/space/rig/mining
+	spawnmask = /obj/item/clothing/mask/breath
+	spawnpocket1 = /obj/item/weapon/shovel/spade
+	spawnpocket2 = /obj/item/weapon/tank/emergency_oxygen/double
+	suitstorage = /obj/item/weapon/pickaxe/plasmacutter
+
+/obj/effect/mobspawn/plasma_researcher
+	name = "plasma researcher"
+	delchance = 33
+	customjob = "Plasma Researcher"
+	spawnuniform = /obj/item/clothing/under/rank/scientist
+	spawnshoes = /obj/item/clothing/shoes/white
+	spawnradio = /obj/item/device/radio/headset/headset_sci
+	spawnpocket1 = /obj/item/device/assembly/igniter
+	spawnpocket2 = /obj/item/device/assembly/timer
+	spawnsuit = /obj/item/clothing/suit/bomb_suit
+	spawnback = /obj/item/weapon/storage/backpack/satchel_tox
+	spawnhelmet = /obj/item/clothing/head/bomb_hood
+	spawnmask = /obj/item/clothing/mask/breath
+	suitstorage = /obj/item/weapon/tank/plasma
+	spawnbelt = /obj/item/weapon/screwdriver
+
+/obj/effect/mobspawn/security_bomber
+	name = "bomb disposal unit"
+	delchance = 50
+	customjob = "Security Bomb Expert"
+	spawnuniform = /obj/item/clothing/under/rank/security
+	spawnshoes = /obj/item/clothing/shoes/jackboots
+	spawnradio = /obj/item/device/radio/headset/headset_sec/department/sci
+	spawnpocket1 = /obj/item/device/assembly/igniter
+	spawnpocket2 = /obj/item/device/assembly/timer
+	spawnback = /obj/item/weapon/gun/projectile/shotgun/pump/combat
+	spawnsuit = /obj/item/clothing/suit/bomb_suit/security
+	spawnhelmet = /obj/item/clothing/head/bomb_hood/security
+	spawnmask = /obj/item/clothing/mask/gas
+	suitstorage = /obj/item/weapon/tank/plasma
+	spawnbelt = /obj/item/weapon/screwdriver
+	spawninfo = "loyal"
 

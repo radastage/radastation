@@ -127,3 +127,50 @@ obj/item/weapon/wirerod/attackby(var/obj/item/I, mob/user as mob)
 		user << "<span class='notice'>You fasten the wirecutters to the top of the rod with the cable, prongs outward.</span>"
 		del(I)
 		del(src)
+
+/obj/item/weapon/switchblade
+	name = "switchblade"
+	desc = "Used by amateur thugs and professional spies alike."
+	icon_state = "switchblade0"
+	item_state = "nullrod"
+	flags = FPRINT | TABLEPASS | CONDUCT
+	slot_flags = SLOT_BELT | SLOT_BACK
+	force = 0
+	throwforce = 2
+	w_class = 1
+	var/active = 0
+	attack_verb = list("inefficiently poked")
+
+/obj/item/weapon/switchblade/suicide_act(mob/user)
+	viewers(user) << "\red <b>[user] is slitting \his veins open with the [src.name]! It looks like \he's trying to commit girly wine suicide.</b>"
+	return(BRUTELOSS)
+
+/obj/item/weapon/switchblade/attack_self(mob/living/user)
+	if ((CLUMSY in user.mutations) && prob(50))
+		user << "<span class='warning'>You accidentally cut yourself with [src], like a doofus!</span>"
+		user.take_organ_damage(4)
+	active = !active
+	if (active)
+		force = 12
+		throwforce = 10
+		attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+		hitsound = 'sound/weapons/pierce.ogg'
+		icon_state = "switchblade"
+		w_class = 4
+		playsound(user, 'sound/weapons/slashmiss.ogg', 20, 1)
+		user << "<span class='notice'>[src] is now ready.</span>"
+		viewers(user) << "\red <b>[user] draws [src]!</b>"
+		item_state = "knife"
+	else
+		force = 0
+		throwforce = 2
+		attack_verb = list("inefficiently poked")
+		hitsound = null
+		icon_state = "switchblade0"
+		w_class = 1
+		playsound(user, 'sound/weapons/slashmiss.ogg', 20, 1)
+		user << "<span class='notice'>[src] can now be concealed.</span>"
+		viewers(user) << "\red <b>[user] hides [src]!</b>"
+		item_state = "nullrod"
+	add_fingerprint(user)
+	return

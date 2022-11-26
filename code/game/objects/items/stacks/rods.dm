@@ -15,7 +15,11 @@ var/global/list/datum/stack_recipe/rods_recipes = list ( \
 	new/datum/stack_recipe("trophy rack", /obj/item/weapon/storage/backpack/cultpack, 4, time = 75), \
 	new/datum/stack_recipe("metal chain", /obj/item/weapon/melee/chainofcommand{name="metal chain"}, 4, time = 75), \
 	new/datum/stack_recipe("pipe", /obj/item/pipe), \
+	new/datum/stack_recipe("switchblade", /obj/item/weapon/switchblade, 2, time = 100), \
 	new/datum/stack_recipe("nails shell", /obj/item/ammo_casing/shotgun/improvised, time = 75), \
+	null, \
+	new/datum/stack_recipe("gladiator helmet", /obj/item/clothing/head/helmet/gladiator, 4, time = 125), \
+	new/datum/stack_recipe("gladiator armor", /obj/item/clothing/under/gladiator, 4, time = 125), \
 	)
 
 /obj/item/stack/rods

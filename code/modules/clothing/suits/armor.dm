@@ -12,7 +12,7 @@
 /obj/item/clothing/suit/armor/webbing
 	name = "webbing"
 	desc = "A chest carrier, designed to hold ammo."
-	allowed = /obj/item/ammo_magazine
+	allowed = list(/obj/item/ammo_magazine,/obj/item/ammo_casing)
 	flags = FPRINT | TABLEPASS
 	cold_protection = CHEST
 	heat_protection = CHEST

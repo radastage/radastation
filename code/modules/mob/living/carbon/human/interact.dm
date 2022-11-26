@@ -14,13 +14,13 @@
 //	if(src.restrained() || muzzled || src.grabbed_by || !src.canmove || src.stunned || src.paralysis || src.sleeping)
 //		rape = 1
 
-	if(src.gender == MALE && usr.gender == MALE)
+	if(src.gender == MALE && (usr.gender == MALE || usr.gender == NEUTER))
 		orientation = "gay"
 
 	if(src.gender == FEMALE && usr.gender == FEMALE)
 		orientation = "lesbian"
 
-	if(src.gender == FEMALE && usr.gender == MALE)
+	if(src.gender == FEMALE && (usr.gender == MALE || usr.gender == NEUTER))
 		orientation = "maledom"
 
 	if(src.gender == MALE && usr.gender == FEMALE)

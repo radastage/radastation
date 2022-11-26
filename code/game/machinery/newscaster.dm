@@ -418,8 +418,8 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 			else
 				dat+="I'm sorry to break your immersion. This shit's bugged. Report this bug to Agouri, polyxenitopalidou@gmail.com"
 
-
-		human_or_robot_user << browse(dat, "window=newscaster_main;size=400x600")
+		human_or_robot_user << browse({"<HTML><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><HEAD><TITLE>[src]</TITLE></HEAD><BODY>[dat]<HR></BODY></HTML>"}, "window=newscaster_main;size=400x600")
+//		human_or_robot_user << browse(dat, "window=newscaster_main;size=400x600")
 		onclose(human_or_robot_user, "newscaster_main")
 
 	/*if(src.isbroken) //debugging shit
