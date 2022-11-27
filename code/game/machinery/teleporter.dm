@@ -68,7 +68,8 @@
 			continue
 		if(T.z == 2 || T.z > 7)
 			continue
-		var/tmpname = T.loc.name
+	//	var/tmpname = T.loc.name
+		var/tmpname = R.name
 		if(areaindex[tmpname])
 			tmpname = "[tmpname] ([++areaindex[tmpname]])"
 		else

@@ -26,6 +26,16 @@
 	src.add_fingerprint(usr)
 	return
 
+/obj/item/device/radio/beacon/verb/rename()
+	set name = "Rename beacon"
+	set category = "Object"
+	set src in usr
+
+	var/n_name = copytext(sanitize(input(usr, "What would you like to name the radio beacon?", "Beacon renaming", null)  as text), 1, MAX_NAME_LEN)
+	if((loc == usr && usr.stat == 0))
+		name = "Tracking Beacon[(n_name ? text("- '[n_name]'") : null)]"
+	add_fingerprint(usr)
+
 /*
 /obj/item/device/radio/beacon/bacon //Probably a better way of doing this, I'm lazy.
 	proc/digest_delay()

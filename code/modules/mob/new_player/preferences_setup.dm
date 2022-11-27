@@ -427,6 +427,7 @@ datum/preferences
 			m.skin_tone=m.saved_skintone
 			m.h_style=m.saved_hairstyle
 			m.f_style=m.saved_facehair
+			m.tag=md5("[m.real_name]+[rand(9999)]")
 			m.regenerate_icons()
 			m.update_icons()
 		world.log<<"[src.real_name] loaded."

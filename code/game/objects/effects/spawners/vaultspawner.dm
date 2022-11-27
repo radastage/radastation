@@ -1280,7 +1280,7 @@ proc/spawn_random_atom(var/object as text, turf/location as turf)
 
 	for(var/i = lowBoundX,i<=hiBoundX,i++)
 		for(var/j = lowBoundY,j<=hiBoundY,j++)
-			new /turf/simulated/floor/grass(locate(i,j,z))
+			new /turf/simulated/floor/grass{lighting_lumcount=4}(locate(i,j,z))
 			if(prob(20))
 				new /obj/effect/grasses(locate(i,j,z))
 			else if(prob(1))
@@ -1334,7 +1334,7 @@ proc/spawn_random_atom(var/object as text, turf/location as turf)
 
 	for(var/i = lowBoundX,i<=hiBoundX,i++)
 		for(var/j = lowBoundY,j<=hiBoundY,j++)
-			new /turf/simulated/floor/plating/ironsand(locate(i,j,z))
+			new /turf/simulated/floor/plating/ironsand{lighting_lumcount=4}(locate(i,j,z))
 			if(prob(20))
 				new /obj/effect/sands(locate(i,j,z))
 
@@ -1371,7 +1371,7 @@ proc/spawn_random_atom(var/object as text, turf/location as turf)
 
 	for(var/i = lowBoundX,i<=hiBoundX,i++)
 		for(var/j = lowBoundY,j<=hiBoundY,j++)
-			new /turf/simulated/floor/plating/snow/{temperature=241}(locate(i,j,z))
+			new /turf/simulated/floor/plating/snow/{temperature=241; lighting_lumcount=4}(locate(i,j,z))
 			if(prob(20))
 				new /obj/effect/snows(locate(i,j,z))
 

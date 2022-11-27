@@ -38,6 +38,12 @@
 	if(orientation == "femdom")
 		position = input("What would you like to do with them?") in list("Fuck Mouth", "Kiss", "Jerk Off", "Lick Feet", "Give Footjob", "Finger Ass", "Suck Them", "Lick Ass", "Mount Vagina", "Mount Ass", "Slap Ass", "Insert Object (Anal)")
 
+	if(!src)
+		return
+
+	if (usr.stat || usr.restrained() || !in_range(src, usr))
+		return
+
 	switch(position)
 		if("Fuck Ass")
 			sexverb = pick("thrusts", "slides", "puts", "stuffs", "sticks")

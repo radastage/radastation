@@ -88,7 +88,7 @@
 	name = get_visible_name()
 
 	handle_regular_hud_updates()
-	handle_psychosis() //experimental
+//	handle_psychosis()
 
 	// Grabbing
 	for(var/obj/item/weapon/grab/G in src)
@@ -722,6 +722,7 @@
 	*/
 
 	proc/handle_chemicals_in_body()
+		nutrition = 180 //disabling hunger system
 		if(reagents) reagents.metabolize(src)
 
 		if(dna && dna.mutantrace == "plant") //couldn't think of a better place to place it, since it handles nutrition -- Urist
@@ -1249,7 +1250,7 @@
 	proc/handle_changeling()
 		if(mind && mind.changeling)
 			mind.changeling.regenerate()
-
+/*
 	proc/handle_psychosis()
 		if(stat != 2)
 			var/list/traumas = attack_log
@@ -1264,6 +1265,6 @@
 					if(prob(4))
 						Paralyse(1)
 						make_jittery(50)
-
+*/
 #undef HUMAN_MAX_OXYLOSS
 #undef HUMAN_CRIT_MAX_OXYLOSS
