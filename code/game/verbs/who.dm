@@ -27,6 +27,7 @@
 						entry += " - <font color='black'><b>DEAD</b></font>"
 			if(is_special_character(C.mob))
 				entry += " - <b><font color='red'>Antagonist</font></b>"
+			entry += " - <b><font color='red'>AFK for [C.inactivity/600] minutes</font></b>"
 			entry += " (<A HREF='?_src_=holder;adminmoreinfo=\ref[C.mob]'>?</A>)"
 			Lines += entry
 	else
@@ -34,7 +35,7 @@
 			if(C.holder && C.holder.fakekey)
 				Lines += C.holder.fakekey
 			else
-				Lines += C.key
+				Lines += "[C.key] (<b><font color='red'>AFK for [C.inactivity/600] minutes</font></b>)"
 
 	for(var/line in sortList(Lines))
 		msg += "[line]\n"

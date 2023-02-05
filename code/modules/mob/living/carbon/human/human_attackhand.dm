@@ -97,6 +97,8 @@
 						attack_verb = "scratch"
 					if("plant", "gas")
 						attack_verb = "slash"
+					if("zombie")
+						attack_verb = "gnaw"
 
 			var/damage = rand(0, 9)
 			if(!damage)
@@ -105,6 +107,8 @@
 						playsound(loc, 'sound/weapons/slashmiss.ogg', 25, 1, -1)
 					if("scratch")
 						playsound(loc, 'sound/weapons/bladeslice.ogg', 25, 1, -1)
+					if("gnaw")
+						playsound(loc, 'sound/weapons/bite.ogg', 25, 1, -1)
 					else
 						playsound(loc, 'sound/weapons/punchmiss.ogg', 25, 1, -1)
 
@@ -120,9 +124,12 @@
 			if(HULK in M.mutations)
 				damage += 5
 
+
 			switch(attack_verb)
 				if("slash")
 					playsound(loc, 'sound/weapons/slice.ogg', 25, 1, -1)
+				if("gnaw")
+					playsound(loc, 'sound/weapons/bite.ogg', 25, 1, -1)
 				else
 					playsound(loc, "punch", 25, 1, -1)
 
@@ -130,6 +137,15 @@
 							"<span class='userdanger'>[M] has [attack_verb]ed [src]!</span>")
 
 			apply_damage(damage, BRUTE, affecting, armor_block)
+
+			if(M.dna && src.dna)
+				if(M.dna.mutantrace == "zombie" && src.dna.mutantrace == null && prob(7))
+					visible_message("<span class='danger'>[M] has infected [src]!</span>", \
+					"<span class='userdanger'>[M] has infected [src]!</span>")
+					src.dna.mutantrace = "zombie"
+					src.faction = "zombie"
+
+
 			if(damage >= 9)
 				visible_message("<span class='danger'>[M] has weakened [src]!</span>", \
 								"<span class='userdanger'>[M] has weakened [src]!</span>")

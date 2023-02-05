@@ -2151,6 +2151,16 @@
 				J.total_positions = -1
 				J.spawn_positions = -1
 				message_admins("[key_name_admin(usr)] has removed the cap on security officers.")
+			if("setseclevel")
+				switch(security_level)
+					if(SEC_LEVEL_GREEN)
+						set_security_level("blue")
+					if(SEC_LEVEL_BLUE)
+						set_security_level("red")
+					if(SEC_LEVEL_RED)
+						set_security_level("delta")
+					if(SEC_LEVEL_DELTA)
+						set_security_level("green")
 
 	else if(href_list["ac_view_wanted"])            //Admin newscaster Topic() stuff be here
 		src.admincaster_screen = 18                 //The ac_ prefix before the hrefs stands for AdminCaster.

@@ -8,6 +8,7 @@
 	fire_sound = 'sound/weapons/Laser.ogg'
 	charge_cost = 0
 	recoil = 2
+	w_class = 20
 
 	update_icon()
 		..()
@@ -20,6 +21,7 @@
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
 	charge_cost = 0
 	recoil = 4
+	w_class = 20
 
 	update_icon()
 		..()
@@ -35,6 +37,7 @@
 	fire_sound = 'sound/weapons/Laser.ogg'
 	charge_cost = 0
 	recoil = 5
+	w_class = 20
 
 	update_icon()
 		..()
@@ -50,6 +53,7 @@
 	fire_sound = 'sound/weapons/marauder.ogg'
 	charge_cost = 0
 	recoil = 8
+	w_class = 20
 
 	update_icon()
 		..()
@@ -65,6 +69,7 @@
 	fire_sound = 'sound/weapons/Taser.ogg'
 	charge_cost = 0
 	recoil = 5
+	w_class = 20
 
 	update_icon()
 		..()
@@ -78,6 +83,7 @@
 	icon_state = "mecha_honker"
 	item_state = "mecha_honker"
 	fire_sound = 'sound/items/AirHorn.ogg'
+	w_class = 20
 
 	update_icon()
 		..()
@@ -109,6 +115,7 @@
 	item_state = "mecha_scatter"
 	projectile_type = "/obj/item/projectile/bullet/midbullet"
 	fire_sound = 'sound/weapons/Gunshot.ogg'
+	w_class = 20
 	charge_cost = 0
 	recoil = 3
 
@@ -126,6 +133,7 @@
 	fire_sound = 'sound/weapons/Gunshot.ogg'
 	charge_cost = 0
 	recoil = 1
+	w_class = 20
 
 	update_icon()
 		..()
@@ -156,6 +164,7 @@
 	fire_sound = 'sound/effects/bang.ogg'
 	recoil = 1
 	charge_cost = 0
+	w_class = 20
 /*
 /obj/item/missile/primed/New()
 	primed = 1

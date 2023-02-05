@@ -181,6 +181,7 @@
 	src.build_inventory(premium, 0, 1)
 
 	usr << "\blue You restock the [src]."
+	usr << "\red Please don't abuse this feature too much."
 
 /obj/machinery/vending/verb/clear_products()
 	set name = "Reset Vendomat"

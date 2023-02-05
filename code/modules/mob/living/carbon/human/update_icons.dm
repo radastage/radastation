@@ -97,6 +97,8 @@ Please contact me on #coderbus IRC. ~Carnie x
 			base_icon_state = "skeleton"
 		if("gas")
 			base_icon_state = "gas"
+		if("zombie")
+			base_icon_state = "zombie"
 		if("space ogre")
 			icon = 'icons/mob/ogre.dmi'
 			eye_color = 000

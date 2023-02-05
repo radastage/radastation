@@ -108,10 +108,11 @@
 					dat += "<A href='?src=\ref[src];action=create;item=orebag;cost=150'>Ore Bag</A> <FONT COLOR=blue>(150)</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=trashbag;cost=150'>Trash Bag</A> <FONT COLOR=blue>(150)</FONT><BR>"
 					dat += "Other<BR>"
-					dat += "<A href='?src=\ref[src];action=create;item=kitty;cost=30'>kitty ears</A> <FONT COLOR = blue>(30)</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=cloth;cost=40'>Cloth</A> <FONT COLOR=blue>(40)</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=cardboard;cost=40'>Cardboard</A> <FONT COLOR=blue>(40)</FONT><BR>"
-					//dat += "<A href='?src=\ref[src];action=create;item=monkey;cost=500'>Monkey</A> <FONT COLOR=blue>(500)</FONT><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=monkey;cost=200'>Monkey Cube</A> <FONT COLOR=blue>(200)</FONT><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=sand;cost=100'>Sand</A> <FONT COLOR=green>(100)</FONT><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=iron;cost=300'>Iron</A> <FONT COLOR=red>(300)</FONT><BR>"
 				else
 					dat += "<BR><FONT COLOR=red>No beaker inside. Please insert a beaker.</FONT><BR>"
 			if("nopoints")
@@ -218,8 +219,6 @@
 			new/obj/item/stack/sheet/cardboard(src.loc)
 		if("hoshat")
 			new/obj/item/clothing/head/helmet/HoS(src.loc)
-		if("kitty")
-			new/obj/item/clothing/head/kitty(src.loc)
 		if("briefcase")
 			new/obj/item/weapon/storage/briefcase(src.loc)
 		if("plantbag")
@@ -229,7 +228,11 @@
 		if("trashbag")
 			new/obj/item/weapon/storage/bag/trash(src.loc)
 		if("monkey")
-			new/mob/living/carbon/monkey(src.loc)
+			new/obj/item/weapon/reagent_containers/food/snacks/monkeycube(src.loc)
+		if("sand")
+			new/obj/item/weapon/ore/glass(src.loc)
+		if("iron")
+			new/obj/item/weapon/ore/iron(src.loc)
 	processing = 0
 	menustat = "complete"
 	update_icon()

@@ -167,6 +167,7 @@ var/global/list/datum/stack_recipe/rglass_recipes = list ( \
 	null, \
 	new/datum/stack_recipe("light tile", /obj/item/stack/tile/light, 1,4,20), \
 	new/datum/stack_recipe("camera", /obj/item/device/camera, 1, time = 10), \
+	new/datum/stack_recipe("multitool", /obj/item/device/multitool, 1, time = 10), \
 	new/datum/stack_recipe("All-In-One Grinder", /obj/machinery/reagentgrinder, 4, time = 25, one_per_turf = 1, on_floor = 1), \
 
 )

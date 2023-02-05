@@ -234,6 +234,7 @@ var/global/list/datum/stack_recipe/cloth_recipes = list ( \
 	new/datum/stack_recipe("white jumpsuit", /obj/item/clothing/under/color/white, 2), \
 	new/datum/stack_recipe("white shoes", /obj/item/clothing/shoes/white), \
 	new/datum/stack_recipe("white gloves", /obj/item/clothing/gloves/white), \
+	new/datum/stack_recipe("white suit", /obj/item/clothing/under/suit_jacket/white, 3), \
 	null, \
 	new/datum/stack_recipe("backpack", /obj/item/weapon/storage/backpack, 3, time = 75), \
 	new/datum/stack_recipe("satchel", /obj/item/weapon/storage/backpack/satchel_norm, 3, time = 75), \
@@ -296,6 +297,7 @@ var/global/list/datum/stack_recipe/cloth_recipes = list ( \
 	new/datum/stack_recipe("socks", /obj/item/clothing/shoes/socks), \
 	new/datum/stack_recipe("stockings", /obj/item/clothing/shoes/stockings), \
 	null, \
+	new/datum/stack_recipe("kitty ears", /obj/item/clothing/head/kitty), \
 	new/datum/stack_recipe("rabbit ears", /obj/item/clothing/head/rabbitears), \
 	new/datum/stack_recipe("sturdy top-hat", /obj/item/clothing/head/that), \
 	new/datum/stack_recipe("pirate bandana", /obj/item/clothing/head/bandana), \

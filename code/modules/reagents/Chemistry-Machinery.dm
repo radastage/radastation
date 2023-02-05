@@ -179,7 +179,7 @@
 	anchored = 1
 	icon = 'icons/obj/chemical.dmi'
 	icon_state = "mixer0"
-	use_power = 0 //temp0201
+	use_power = 1 //temp0201
 	idle_power_usage = 20
 	var/beaker = null
 	var/obj/item/weapon/storage/pill_bottle/loaded_pill_bottle = null
@@ -342,6 +342,11 @@
 			else
 				var/obj/item/weapon/reagent_containers/food/condiment/P = new/obj/item/weapon/reagent_containers/food/condiment(src.loc)
 				reagents.trans_to(P,50)
+		else if (href_list["synthesize"])
+			for(var/datum/reagent/synth in reagents.reagent_list)
+				synth.volume += 2
+				reagents.total_volume += 2
+				use_power(400)
 
 	src.updateUsrDialog()
 	return
@@ -398,7 +403,8 @@
 			dat += "Empty<BR>"
 		if(!condi)
 			dat += "<HR><BR><A href='?src=\ref[src];createpill=1'>Create pill (50 units max)</A><BR>"
-			dat += "<A href='?src=\ref[src];createbottle=1'>Create bottle (30 units max)</A>"
+			dat += "<A href='?src=\ref[src];createbottle=1'>Create bottle (30 units max)</A><BR>"
+			dat += "<A href='?src=\ref[src];synthesize=1'>Synthesize disposal reagents</A>"
 		else
 			dat += "<A href='?src=\ref[src];createbottle=1'>Create bottle (50 units max)</A>"
 	if(!condi)
