@@ -93,17 +93,17 @@ var/list/uplink_items = list()
 /datum/uplink_item/dangerous/revolver
 	name = "Revolver"
 	item = /obj/item/weapon/gun/projectile
-	cost = 6
+	cost = 8
 
 /datum/uplink_item/dangerous/ammo
 	name = "Ammo-357"
 	item = /obj/item/ammo_magazine/a357
-	cost = 2
+	cost = 1
 
 /datum/uplink_item/dangerous/crossbow
 	name = "Energy Crossbow"
 	item = /obj/item/weapon/gun/energy/crossbow
-	cost = 5
+	cost = 7
 
 /datum/uplink_item/dangerous/sword
 	name = "Energy Sword"
@@ -124,7 +124,7 @@ var/list/uplink_items = list()
 /datum/uplink_item/stealthy_weapons/para_pen
 	name = "Paralysis Pen"
 	item = /obj/item/weapon/pen/paralysis
-	cost = 3
+	cost = 5
 
 /datum/uplink_item/stealthy_weapons/soap
 	name = "Syndicate Soap"
@@ -145,27 +145,27 @@ var/list/uplink_items = list()
 /datum/uplink_item/stealthy_tools/chameleon_jumpsuit
 	name = "Chameleon Jumpsuit"
 	item = /obj/item/clothing/under/chameleon
-	cost = 3
+	cost = 1
 
 /datum/uplink_item/stealthy_tools/syndigolashes
 	name = "No-Slip Syndicate Shoes"
 	item = /obj/item/clothing/shoes/syndigaloshes
-	cost = 2
+	cost = 1
 
 /datum/uplink_item/stealthy_tools/agent_card
 	name = "Agent ID Card"
 	item = /obj/item/weapon/card/id/syndicate
-	cost = 2
+	cost = 1
 
 /datum/uplink_item/stealthy_tools/voice_changer
 	name = "Voice Changer"
 	item = /obj/item/clothing/mask/gas/voice
-	cost = 4
+	cost = 1
 
 /datum/uplink_item/stealthy_tools/chameleon_proj
 	name = "Chameleon-Projector"
 	item = /obj/item/device/chameleon
-	cost = 4
+	cost = 1
 
 
 // DEVICE AND TOOLS
@@ -176,7 +176,7 @@ var/list/uplink_items = list()
 /datum/uplink_item/device_tools/emag
 	name = "Cryptographic Sequencer"
 	item = /obj/item/weapon/card/emag
-	cost = 3
+	cost = 5
 
 /datum/uplink_item/device_tools/toolbox
 	name = "Fully Loaded Toolbox"
@@ -186,22 +186,22 @@ var/list/uplink_items = list()
 /datum/uplink_item/device_tools/space_suit
 	name = "Space Suit"
 	item = /obj/item/weapon/storage/box/syndie_kit/space
-	cost = 3
+	cost = 2
 
 /datum/uplink_item/device_tools/thermal
 	name = "Thermal Imaging Glasses"
 	item = /obj/item/clothing/glasses/thermal/syndi
-	cost = 3
+	cost = 2
 
 /datum/uplink_item/device_tools/binary
 	name = "Binary Translator Key"
 	item = /obj/item/device/encryptionkey/binary
-	cost = 3
+	cost = 1
 
 /datum/uplink_item/device_tools/hacked_module
 	name = "Hacked AI Upload Module"
 	item = /obj/item/weapon/aiModule/syndicate
-	cost = 7
+	cost = 1
 
 /datum/uplink_item/device_tools/plastic_explosives
 	name = "C-4 (Destroys Walls)"
@@ -211,18 +211,18 @@ var/list/uplink_items = list()
 /datum/uplink_item/device_tools/powersink
 	name = "Powersink (DANGER!)"
 	item = /obj/item/device/powersink
-	cost = 5
+	cost = 1
 
 /datum/uplink_item/device_tools/singularity_beacon
 	name = "Singularity Beacon (DANGER!)"
 	item = /obj/item/device/sbeacondrop
-	cost = 7
+	cost = 1
 
 /datum/uplink_item/device_tools/teleporter
 	name = "Teleporter Circuit Board"
 	item = /obj/item/weapon/circuitboard/teleporter
-	cost = 20
-	gamemodes = list("nuclear emergency")
+	cost = 1
+//	gamemodes = list("nuclear emergency")
 
 
 // IMPLANTS
@@ -233,12 +233,12 @@ var/list/uplink_items = list()
 /datum/uplink_item/implants/freedom
 	name = "Freedom Implant"
 	item = /obj/item/weapon/storage/box/syndie_kit/imp_freedom
-	cost = 3
+	cost = 1
 
 /datum/uplink_item/implants/uplink
 	name = "Uplink Implant (Contains 5 Telecrystals)"
 	item = /obj/item/weapon/storage/box/syndie_kit/imp_uplink
-	cost = 10
+	cost = 1
 
 
 // POINTLESS BADASSERY
@@ -254,7 +254,7 @@ var/list/uplink_items = list()
 /datum/uplink_item/badass/balloon
 	name = "For showing that You Are The Boss (Useless Balloon)"
 	item = /obj/item/toy/syndicateballoon
-	cost = 10
+	cost = 1
 
 /datum/uplink_item/badass/random
 	name = "Random Item (??)"

@@ -221,6 +221,7 @@
 			traitor_mob.mutations.Remove(CLUMSY)
 
 	// find a radio! toolbox(es), backpack, belt, headset
+	traitor_mob << sound('sound/ambience/tatoralert.ogg', repeat = 0, wait = 0, volume = 35, channel = 2)
 	var/loc = ""
 	var/obj/item/R = locate(/obj/item/device/pda) in traitor_mob.contents //Hide the uplink in a PDA if available, otherwise radio
 	if(!R)

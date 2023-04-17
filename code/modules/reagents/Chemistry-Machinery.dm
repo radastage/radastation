@@ -404,7 +404,7 @@
 		if(!condi)
 			dat += "<HR><BR><A href='?src=\ref[src];createpill=1'>Create pill (50 units max)</A><BR>"
 			dat += "<A href='?src=\ref[src];createbottle=1'>Create bottle (30 units max)</A><BR>"
-			dat += "<A href='?src=\ref[src];synthesize=1'>Synthesize disposal reagents</A>"
+			dat += "<A href='?src=\ref[src];synthesize=1'>Synthesize buffer reagents</A>"
 		else
 			dat += "<A href='?src=\ref[src];createbottle=1'>Create bottle (50 units max)</A>"
 	if(!condi)

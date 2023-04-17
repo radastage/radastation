@@ -10,6 +10,7 @@ var/global/list/datum/stack_recipe/rods_recipes = list ( \
 	new/datum/stack_recipe("crowbar", /obj/item/weapon/crowbar), \
 	new/datum/stack_recipe("wrench", /obj/item/weapon/wrench), \
 	new/datum/stack_recipe("screwdriver", /obj/item/weapon/screwdriver), \
+	new/datum/stack_recipe("spade", /obj/item/weapon/shovel/spade), \
 	new/datum/stack_recipe("cable coil", /obj/item/weapon/cable_coil/random), \
 	new/datum/stack_recipe("makeshift lighter", /obj/item/weapon/lighter/random{name="makeshift lighter"}), \
 	new/datum/stack_recipe("trophy rack", /obj/item/weapon/storage/backpack/cultpack, 4, time = 75), \

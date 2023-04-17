@@ -36,7 +36,6 @@ var/global/list/datum/stack_recipe/metal_recipes = list ( \
 	new/datum/stack_recipe("large grenade casing", /obj/item/weapon/grenade/chem_grenade/large, 2), \
 	new/datum/stack_recipe("handcuffs", /obj/item/weapon/handcuffs, 2), \
 	new/datum/stack_recipe("bear trap", /obj/item/weapon/legcuffs/beartrap, 2), \
-	new/datum/stack_recipe("spade", /obj/item/weapon/shovel/spade), \
 	new/datum/stack_recipe("kitchen knife", /obj/item/weapon/kitchenknife, 3), \
 	new/datum/stack_recipe("butcher's Cleaver", /obj/item/weapon/butch, 4), \
 	new/datum/stack_recipe("kitchen spike", /obj/structure/kitchenspike, 5, time = 50, one_per_turf = 1, on_floor = 1), \
@@ -273,6 +272,7 @@ var/global/list/datum/stack_recipe/cloth_recipes = list ( \
 	new/datum/stack_recipe("sexy mime mask", /obj/item/clothing/mask/gas/sexymime), \
 	new/datum/stack_recipe("clown wig and mask", /obj/item/clothing/mask/gas/clown_hat), \
 	new/datum/stack_recipe("sexy-clown wig and mask", /obj/item/clothing/mask/gas/sexyclown), \
+	new/datum/stack_recipe("witch hat", /obj/item/clothing/head/witchwig, 2), \
 	null, \
 	new/datum/stack_recipe("Lawyer suit", /obj/item/clothing/under/lawyer/female, 3), \
 	new/datum/stack_recipe("executive suit", /obj/item/clothing/under/suit_jacket/really_black, 3), \

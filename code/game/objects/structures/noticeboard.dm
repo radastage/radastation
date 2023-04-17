@@ -72,9 +72,9 @@
 		var/obj/item/weapon/paper/P = locate(href_list["read"])
 		if((P && P.loc == src))
 			if(!( istype(usr, /mob/living/carbon/human) ))
-				usr << browse("<HTML><HEAD><TITLE>[P.name]</TITLE></HEAD><BODY><TT>[stars(P.info)]</TT></BODY></HTML>", "window=[P.name]")
+				usr << browse({"<HTML><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><HEAD><TITLE>[P.name]</TITLE></HEAD><BODY>[stars(P.info)]<HR>[P.stamps]</BODY></HTML>"}, "window=[P.name]")
 				onclose(usr, "[P.name]")
 			else
-				usr << browse("<HTML><HEAD><TITLE>[P.name]</TITLE></HEAD><BODY><TT>[P.info]</TT></BODY></HTML>", "window=[P.name]")
+				usr << browse({"<HTML><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><HEAD><TITLE>[P.name]</TITLE></HEAD><BODY>[P.info]<HR>[P.stamps]</BODY></HTML>"}, "window=[P.name]")
 				onclose(usr, "[P.name]")
 	return

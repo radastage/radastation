@@ -112,6 +112,7 @@
 					dat += "<A href='?src=\ref[src];action=create;item=cardboard;cost=40'>Cardboard</A> <FONT COLOR=blue>(40)</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=monkey;cost=200'>Monkey Cube</A> <FONT COLOR=blue>(200)</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=sand;cost=100'>Sand</A> <FONT COLOR=green>(100)</FONT><BR>"
+					dat += "<A href='?src=\ref[src];action=create;item=wood;cost=200'>Wood</A> <FONT COLOR=yellow>(200)</FONT><BR>"
 					dat += "<A href='?src=\ref[src];action=create;item=iron;cost=300'>Iron</A> <FONT COLOR=red>(300)</FONT><BR>"
 				else
 					dat += "<BR><FONT COLOR=red>No beaker inside. Please insert a beaker.</FONT><BR>"
@@ -231,6 +232,8 @@
 			new/obj/item/weapon/reagent_containers/food/snacks/monkeycube(src.loc)
 		if("sand")
 			new/obj/item/weapon/ore/glass(src.loc)
+		if("wood")
+			new/obj/item/stack/sheet/wood(src.loc)
 		if("iron")
 			new/obj/item/weapon/ore/iron(src.loc)
 	processing = 0

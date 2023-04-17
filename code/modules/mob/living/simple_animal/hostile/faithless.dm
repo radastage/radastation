@@ -110,3 +110,59 @@
 		if(prob(12))
 			L.Weaken(3)
 			L.visible_message("<span class='danger'>\the [src] knocks down \the [L]!</span>")
+
+/mob/living/simple_animal/hostile/zombie
+	name = "zombie"
+	desc = "They hunger!"
+	icon = 'icons/mob/human.dmi'
+	icon_state = "zombie_s"
+	icon_living = "zombie_s"
+	icon_dead = "zombie_l"
+	speak_chance = 15
+	turns_per_move = 15
+	response_help = "pokes"
+	response_disarm = "shoves"
+	response_harm = "hits the"
+	speed = 5
+	maxHealth = 50
+	health = 50
+
+	harm_intent_damage = 10
+	melee_damage_lower = 1
+	melee_damage_upper = 15
+	attacktext = "gnaws"
+	attack_sound = 'sound/weapons/bite.ogg'
+
+	min_oxy = 0
+	max_oxy = 0
+	min_tox = 0
+	max_tox = 0
+	min_co2 = 0
+	max_co2 = 0
+	min_n2 = 0
+	max_n2 = 0
+	minbodytemp = 0
+
+	faction = "zombie"
+	speak = list("Braaaains...","Urgh...","Fresh meat...","...")
+	speak_emote = list("growls","grunts","yells", "says", "moans", "roars")
+	emote_hear = list("cries","yells", "says something")
+	emote_see = list("gasps", "sniffs", "twitches violently", "goes pale for a second", "drools", "frowns", "coughs")
+
+	speak_chance = 1
+
+/mob/living/simple_animal/hostile/zombie/AttackingTarget()
+	..()
+	if(isliving(target_mob))
+		var/mob/living/L = target_mob
+		if(L.reagents)
+			L.reagents.add_reagent("toxin", 3)
+			if(prob(15))
+				L << "\red You feel a tiny prick."
+				L.reagents.add_reagent("mindbreaker", 5)
+				if(prob(15))
+					if(istype(L, /mob/living/carbon/human))
+						var/mob/living/carbon/human/H = L
+						if(H.dna && H:dna:mutantrace == null)
+							H:dna:mutantrace = "zombie"
+							H.faction = "zombie"
