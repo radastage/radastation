@@ -557,6 +557,7 @@
 							/obj/effect/mobspawn/security_bomber							= 1,
 							/obj/machinery/wish_granter										= 1,
 							/mob/living/simple_animal/hostile/faithless						= 3,
+							/mob/living/simple_animal/hostile/retaliate/mecha				= 2,
 							/obj/effect/landmark/mobcorpse									= 7,
 							/obj/effect/landmark/malemobcorpse/spaceninja					= 1,
 							/obj/effect/landmark/femalemobcorpse/femalespaceninja			= 1,

@@ -199,3 +199,25 @@
 #undef LAYING_EGGS
 #undef MOVING_TO_TARGET
 #undef SPINNING_COCOON
+
+/mob/living/simple_animal/hostile/spider/random
+	var/spawnthismob = null
+	var/list/mbspwn = list(	/mob/living/simple_animal/hostile/giant_spider				= 3,
+							/mob/living/simple_animal/hostile/giant_spider/hunter					= 1,
+							/mob/living/simple_animal/hostile/giant_spider/nurse					= 1
+							)
+
+/mob/living/simple_animal/hostile/spider/random/New()
+	spawnthismob = pickweight(mbspwn)
+	new spawnthismob (src.loc)
+	del(src)
+
+/mob/living/simple_animal/hostile/spawner/spider
+	name = "cocoon"
+	maxHealth = 200
+	health = 200
+	icon = 'icons/effects/effects.dmi'
+	icon_state = "cocoon2"
+	mob_type = /mob/living/simple_animal/hostile/spider/random
+	faction = "spiders"
+	spawn_text = "spawns from"

@@ -16,13 +16,13 @@
 //					matches += "ID ([client.computer_id])"
 //						message_admins("<font color='red'><B>Notice: </B><font color='blue'>[key_name_admin(src)] has the same [matches] as [key_name_admin(M)] (no longer logged in). </font>", 1)
 //						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in).")
-				if(matches)
-					if(M.client)
-						message_admins("<font color='red'><B>Notice: </B><font color='blue'>[key_name_admin(src)] has the same [matches] as [key_name_admin(M)].</font>", 1)
-						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)].")
-					else
-						message_admins("<font color='red'><B>Notice: </B><font color='blue'>[key_name_admin(src)] has the same [matches] as [key_name_admin(M)] (no longer logged in). </font>", 1)
-						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in).")
+//				if(matches)
+//					if(M.client)
+//						message_admins("<font color='red'><B>Notice: </B><font color='blue'>[key_name_admin(src)] has the same [matches] as [key_name_admin(M)].</font>", 1)
+//						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)].")
+//					else
+//						message_admins("<font color='red'><B>Notice: </B><font color='blue'>[key_name_admin(src)] has the same [matches] as [key_name_admin(M)] (no longer logged in). </font>", 1)
+//						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(M)] (no longer logged in).")
 
 /mob/Login()
 	player_list |= src

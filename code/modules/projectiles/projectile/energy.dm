@@ -14,6 +14,11 @@
 	weaken = 10
 	stutter = 10
 
+/obj/item/projectile/energy/electrode/New()
+	stun = rand(1, 6)
+	weaken = rand(1, 6)
+	stutter = rand(1, 6)
+
 
 /obj/item/projectile/energy/declone
 	name = "declown"

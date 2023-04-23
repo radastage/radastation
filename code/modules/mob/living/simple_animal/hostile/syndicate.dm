@@ -261,6 +261,7 @@
 							/mob/living/simple_animal/hostile/syndicate/melee				= 2,
 							/mob/living/simple_animal/hostile/syndicate/ranged				= 2,
 							/mob/living/simple_animal/hostile/syndicate						= 2,
+							/mob/living/simple_animal/hostile/retaliate/mecha/syndicate		= 1,
 							/mob/living/simple_animal/hostile/syndicate/scout				= 2
 							)
 

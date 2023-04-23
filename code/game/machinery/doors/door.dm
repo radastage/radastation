@@ -278,3 +278,12 @@
 
 /obj/machinery/door/morgue
 	icon = 'icons/obj/doors/doormorgue.dmi'
+
+/obj/machinery/door/morgue/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if (istype(W, /obj/item/weapon/wrench))
+		new /obj/item/stack/sheet/plasteel( src.loc )
+		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
+		del(src)
+		return
+	else
+		..()

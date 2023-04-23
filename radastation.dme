@@ -1218,6 +1218,7 @@
 #include "code\modules\mob\living\simple_animal\hostile\hivebot.dm"
 #include "code\modules\mob\living\simple_animal\hostile\hostile.dm"
 #include "code\modules\mob\living\simple_animal\hostile\lizardman.dm"
+#include "code\modules\mob\living\simple_animal\hostile\mecha.dm"
 #include "code\modules\mob\living\simple_animal\hostile\mimic.dm"
 #include "code\modules\mob\living\simple_animal\hostile\nanotrasen.dm"
 #include "code\modules\mob\living\simple_animal\hostile\pirate.dm"

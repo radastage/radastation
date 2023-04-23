@@ -17,10 +17,17 @@
 	minbodytemp = 0
 	maxbodytemp = 350
 	stat = 1
+	canmove = 0
 
 
 /mob/living/simple_animal/hostile/spawner/Life()
 	. = ..()
+
+	for(var/i = 1 to spawned_mobs.len)
+		for(var/M in spawned_mobs)
+			if(!M || M == null)
+				spawned_mobs -= M
+
 	spawn_mob()
 
 /mob/living/simple_animal/hostile/spawner/Die()
@@ -31,6 +38,8 @@
 	if(nearby.len >= max_mobs)
 		return 0
 	if(spawn_delay > world.time)
+		return 0
+	if(src.loc.contents >= max_mobs)
 		return 0
 //	if(spawned_mobs.len >= max_mobs)
 //		return 0

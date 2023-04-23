@@ -113,6 +113,8 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	new/datum/stack_recipe("morgue", /obj/structure/morgue, 4, time = 50, one_per_turf = 1), \
 	new/datum/stack_recipe("crematorium", /obj/structure/crematorium, 4, time = 50, one_per_turf = 1), \
 	new/datum/stack_recipe("crematorium switch", /obj/machinery/crema_switch, 1, time = 10, one_per_turf = 1), \
+	new/datum/stack_recipe("plastic flaps", /obj/structure/plasticflaps, 1, time = 50, one_per_turf = 1), \
+	new/datum/stack_recipe("door", /obj/item/stack/sheet/plasteel, 2, time = 75, one_per_turf = 1), \
 	null, \
 	new/datum/stack_recipe("mass driver", /obj/machinery/mass_driver, 4, time = 50, one_per_turf = 1), \
 	new/datum/stack_recipe("mass driver button", /obj/machinery/driver_button, 1, time = 10, one_per_turf = 1), \
@@ -140,6 +142,7 @@ var/global/list/datum/stack_recipe/plasteel_recipes = list ( \
 	new/datum/stack_recipe("armored robe", /obj/item/clothing/suit/cultrobes/alt, 4, time = 35), \
 	new/datum/stack_recipe("heavy armor", /obj/item/clothing/suit/armor/heavy, 5, time = 35), \
 	new/datum/stack_recipe("gun turret", /obj/structure/turret/gun_turret, 5, time = 60, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("improvised vest", /obj/item/clothing/suit/armor/bulletproof{rgb=441; name="improvised vest"}, 5, time = 65), \
 	null, \
 	new/datum/stack_recipe("autolathe", /obj/machinery/autolathe, 5, time = 60, one_per_turf = 1), \
 	new/datum/stack_recipe("microwave oven", /obj/machinery/microwave, 3, time = 35, one_per_turf = 1), \

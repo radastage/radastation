@@ -151,6 +151,7 @@
 							/mob/living/simple_animal/hostile/retaliate/nanotrasen/ranged	= 2,
 							/mob/living/simple_animal/hostile/retaliate/nanotrasen			= 2,
 							/mob/living/simple_animal/hostile/retaliate/nanotrasen/ranged/smg	= 2,
+							/mob/living/simple_animal/hostile/retaliate/mecha/nanotrasen	= 1,
 							/mob/living/simple_animal/hostile/retaliate/nanotrasen/scout	= 2
 							)
 

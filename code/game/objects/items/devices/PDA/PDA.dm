@@ -472,6 +472,7 @@ var/global/list/obj/item/device/pda/PDAs = list()
 					id_check(U, 1)
 				if("UpdateInfo")
 					ownjob = id.assignment
+					owner = id.registered_name
 					name = "PDA-[owner] ([ownjob])"
 				if("Eject")//Ejects the cart, only done from hub.
 					if (!isnull(cartridge))

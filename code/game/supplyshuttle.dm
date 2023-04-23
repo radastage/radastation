@@ -37,6 +37,11 @@ var/datum/controller/supply_shuttle/supply_shuttle = new()
 		anchored = !anchored
 		user << "<span class='notice'>You have [anchored ? "fastened the plastic flaps to" : "unfastened the plastic flaps from"] the floor.</span>"
 		return
+	if(istype(W, /obj/item/weapon/wirecutters) && !anchored)
+		new /obj/item/stack/sheet/plasteel( src.loc )
+		playsound(src.loc, 'sound/items/Wirecutter.ogg', 50, 1)
+		del(src)
+		return
 	else
 		..()
 
@@ -57,9 +62,11 @@ var/datum/controller/supply_shuttle/supply_shuttle = new()
 /obj/structure/plasticflaps/ex_act(severity)
 	switch(severity)
 		if (1)
+			new /obj/item/stack/sheet/plasteel( src.loc )
 			del(src)
 		if (2)
 			if (prob(50))
+				new /obj/item/stack/sheet/plasteel( src.loc )
 				del(src)
 		if (3)
 			if (prob(5))
