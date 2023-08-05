@@ -202,9 +202,9 @@ datum/preferences
 					dat += "<b>Adminhelp Sound</b>: "
 					dat += "<a href='?_src_=prefs;preference=hear_adminhelps'>[(toggles & SOUND_ADMINHELP)?"On":"Off"]</a><br>"
 
-					if(config.allow_admin_ooccolor && check_rights(R_ADMIN,0))
-						dat += "<br><b>OOC</b><br>"
-						dat += "<span style='border: 1px solid #161616; background-color: [ooccolor];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=ooccolor;task=input'>Change</a><br>"
+				//	if(config.allow_admin_ooccolor && check_rights(R_ADMIN,0))
+					dat += "<br><b>OOC</b><br>"
+					dat += "<span style='border: 1px solid #161616; background-color: [ooccolor];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=ooccolor;task=input'>Change</a><br>"
 
 				dat += "</td><td width='300px' height='300px' valign='top'>"
 

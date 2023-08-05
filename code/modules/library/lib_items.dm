@@ -193,7 +193,7 @@
 		return
 
 	if(dat)
-		user << browse("<TT><I>Penned by [author].</I></TT> <BR>" + "[dat]", "window=book")
+		user << browse({"<HTML><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><HEAD><TITLE>[name]</TITLE></HEAD><BODY><TT><I>Penned by [author].</I></TT> <BR>[dat]<HR></BODY></HTML>"}, "window=[name]")
 		user.visible_message("[user] opens a book titled \"[title]\" and begins reading intently.")
 		onclose(user, "book")
 	else
