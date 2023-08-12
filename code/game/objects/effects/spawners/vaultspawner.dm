@@ -1418,3 +1418,30 @@ proc/spawn_random_atom(var/object as text, turf/location as turf)
 	new /obj/item/weapon/storage/box/monkeycubes(locate(location.x,location.y,location.z))
 
 	del(src)
+
+/obj/effect/debug_space_30x30
+	var/maxX = 30
+	var/maxY = 30
+	var/minX = 30
+	var/minY = 30
+
+/obj/effect/debug_space_30x30/New(turf/location as turf,lX = minX,uX = maxX,lY = minY,uY = maxY,var/type = null)
+
+	var/lowBoundX = location.x
+	var/lowBoundY = location.y
+
+	var/hiBoundX = location.x + rand(lX,uX)
+	var/hiBoundY = location.y + rand(lY,uY)
+
+	var/z = location.z
+
+	for(var/i = lowBoundX,i<=hiBoundX,i++)
+		for(var/j = lowBoundY,j<=hiBoundY,j++)
+			if(i == lowBoundX || i == hiBoundX || j == lowBoundY || j == hiBoundY)
+				new /turf/space(locate(i,j,z))
+			else
+				var/turf/T = new /turf/space(locate(i,j,z))
+				for(var/obj/O in T.contents)
+					del(O)
+
+	del(src)

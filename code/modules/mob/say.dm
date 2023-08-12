@@ -12,6 +12,7 @@
 	if(say_disabled)	//This is here to try to identify lag problems
 		usr << "\red Speech is currently admin-disabled."
 		return
+
 	usr.say(message)
 
 /mob/verb/me_verb(message as text)
@@ -92,3 +93,34 @@
 	// should be overloaded for all mobs whose "ear" is separate from their "mob"
 
 	return get_turf(src)
+
+/mob/verb/show_bubble()
+	set name = "Show Speech Bubble"
+	set category = "IC"
+	var/bubble_type = "normal_typing"
+	var/duration
+
+	if (src.stat)
+		return
+
+	switch(alert(src, "What speech bubble do you want to show?", "Speech Bubble", "Default", "Question", "Exclaim"))
+		if("Default")
+			bubble_type = "normal_typing"
+		if("Question")
+			bubble_type = "default1"
+		if("Exclaim")
+			bubble_type = "default2"
+
+	duration = input(src,"Please, enter the bubble duration (in seconds, from 1 to 300), type 0 to cancel.") as num|null
+
+	if(duration < 1 || duration > 300 )
+		return
+
+	var/image/SB = image('icons/mob/talk.dmi', icon_state = "[bubble_type]", layer = FLY_LAYER)
+	overlays += SB
+	spawn()
+		sleep(duration*10)
+		overlays -= SB
+		del(SB)
+
+	return

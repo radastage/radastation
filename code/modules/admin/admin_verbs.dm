@@ -20,6 +20,7 @@ var/list/admin_verbs_default = list(
 	/client/proc/investigate_show,		/*various admintools for investigation. Such as a singulo grief-log*/
 	/client/proc/loadworld,
 	/client/proc/saveworld,
+	/client/proc/saveworld_alt,
 	/client/proc/secrets
 	)
 var/list/admin_verbs_admin = list(

@@ -12,4 +12,13 @@
 	set hidden = 0
 	if(!check_rights(0))	return
 
-	Good_Save()
+	Good_Save("1")
+
+/client/proc/saveworld_alt()
+	set category = "Debug"
+	set name = "Save World Alt"
+	set hidden = 0
+	if(!check_rights(0))	return
+
+	Good_Save("2")
+	src << "Check 2.sav in MapSaves folder."

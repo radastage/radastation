@@ -247,6 +247,9 @@
 	if(iscarbon(src))
 		var/mob/living/carbon/C = src
 		C.handcuffed = initial(C.handcuffed)
+		C.mutations.Remove(HUSK)
+		C.status_flags &= ~(XENO_HOST)
+		C.status_flags &= ~(DISFIGURED)
 		if(C.reagents)
 			for(var/datum/reagent/R in C.reagents.reagent_list)
 				C.reagents.clear_reagents()

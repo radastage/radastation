@@ -345,12 +345,16 @@ proc/establish_db_connection()
 			spawn(0)	new /mob/living/simple_animal/hostile/retaliate/freegolem/random(T)
 */
 
-/proc/Good_Save()
+/proc/Good_Save(var/file_name)
 	world<<"Saving map."
 	world.log<<"Saving map."
+
+	if(!file_name)
+		file_name = "1"
+
 	for(var/n=1,n<=2,n++)
 		if(n==2)continue
-		world<<n
+		world<<file_name
 		var/list/O=list()
 		for(var/atom/movable/o)if(o.z==n)
 			o.saved_x=o.x
@@ -368,9 +372,9 @@ proc/establish_db_connection()
 			O+=t
 		for(var/datum/light_source/LS)if(!LS.owner)
 			del(LS)
-		var/savefile/F=new("MapSaves/[n].sav")
+		var/savefile/F=new("MapSaves/[file_name].sav")
 		F<<O
-		world<<"[n] saved"
+		world<<"[file_name] saved"
 	world<<"Map saved."
 	world.log<<"Map saved."
 

@@ -22,6 +22,7 @@ Cursept1 - Game Master
 Curseptl - Game Master
 guest - Game Master
 radastage - Host
+robotseriy - Game Master
 tle - Game Master
 xsi - Game Master
 scaredofshadows - Game Master

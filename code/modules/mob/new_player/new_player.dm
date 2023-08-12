@@ -114,9 +114,9 @@
 
 			observer.started_as_observer = 1
 			close_spawn_windows()
-			var/obj/O = locate("landmark*Observer-Start")
+			var/O = pick(latejoin)
 			src << "\blue Now teleporting."
-			observer.loc = O.loc
+			observer.loc = O
 			if(client.prefs.be_random_name)
 				client.prefs.real_name = random_name(gender)
 			observer.real_name = client.prefs.real_name
